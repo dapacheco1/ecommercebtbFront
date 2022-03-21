@@ -9,6 +9,7 @@ import { ShoesComponent } from './pages/shoes/shoes.component';
 import { PantsComponent } from './pages/pants/pants.component';
 import { ShirtsComponent } from './pages/shirts/shirts.component';
 import { FormsModule } from '@angular/forms';
+import { FilterPipe } from '../pipes/filter.pipe';
 
 
 @NgModule({
@@ -18,12 +19,13 @@ import { FormsModule } from '@angular/forms';
     CarouselComponent,
     ShoesComponent,
     PantsComponent,
-    ShirtsComponent
+    ShirtsComponent,
+    FilterPipe
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class HomeModule { }

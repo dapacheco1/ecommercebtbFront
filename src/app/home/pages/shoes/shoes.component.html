@@ -1,6 +1,20 @@
 <div class="container-fluid">
+  <div class="input-group mb-3 w-25">
+
+    <span class="input-group-text" id="basic-addon1">
+      <i class="fa-solid fa-filter"></i>
+    </span>
+
+  <select class="form-select" aria-label="Default select example" [(ngModel)]="filtergender">
+    <option value="">Filter By gender</option>
+    <option value="F">Female</option>
+    <option value="M">Male</option>
+  </select>
+
+  </div>
+
     <div class="row">
-        <div class="col" *ngFor="let shoe of shoes">
+        <div class="col" *ngFor="let shoe of shoes | filter: filtergender" >
             <div class="row img-thumbnail">
                 <img [src]="shoe.image" class="img-fluid">
             </div>
@@ -10,24 +24,14 @@
                 <p>Stock: {{shoe.stock}} available</p>
                 <p>Details: {{shoe.detail}}</p>
                 <p>Gender: {{shoe.genre?.genre}}</p>
-                <!-- <div class="input-group">
-                    <span class="input-group-text">
-                        <button class="btn btn-success">
-                            <i class="fa-solid fa-minus"></i>
-                        </button>
-                    </span>
-                    <input type="text" class="form-control" name="stock" [(ngModel)]="shoe.stock">
-                    <span class="input-group-text">
-                        <button class="btn btn-success">
-                            <i class="fa-solid fa-plus"></i>
-                        </button>
-                    </span>
-                </div> -->
                 <div class="row">
-                    <button class="btn btn-primary btn-success">Add cart</button>
+                    <button class="btn btn-primary btn-success" (click)="addCart(shoe)">
+                      <i class="fa-solid fa-cart-plus"></i>
+                      Add cart
+                    </button>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </div>

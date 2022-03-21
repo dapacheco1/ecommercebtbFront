@@ -1,1 +1,24 @@
-<p>pants works!</p>
+<div class="container-fluid">
+
+  <div class="row">
+      <div class="col" *ngFor="let pant of pants">
+          <div class="row img-thumbnail">
+              <img [src]="pant.image" class="img-fluid">
+          </div>
+          <div class="row img-thumbnail">
+              <h3>{{pant.name}}</h3>
+              <p>Price:${{pant.price}}USD</p>
+              <p>Stock: {{pant.stock}} available</p>
+              <p>Details: {{pant.detail}}</p>
+              <p>Gender: {{pant.genre?.genre}}</p>
+              <div class="row">
+                  <button class="btn btn-primary btn-success" (click)="addCart(pant)">
+                    <i class="fa-solid fa-cart-plus"></i>
+                    Add cart
+                  </button>
+              </div>
+          </div>
+
+      </div>
+  </div>
+</div>

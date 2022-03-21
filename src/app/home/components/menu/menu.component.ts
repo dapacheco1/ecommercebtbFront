@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Clothing } from 'src/app/interfaces/Clothing';
 import { User } from 'src/app/interfaces/User';
 import { UserServicesService } from 'src/app/services/user-services.service';
 
@@ -12,10 +13,13 @@ export class MenuComponent implements OnInit {
 
   public user!:User;
   public menuDataStatus:boolean = false;
+  public items!:Clothing[];
 
   constructor(
     private _userService:UserServicesService,
-    private router:Router) { }
+    private router:Router) {
+      this.items = [];
+    }
 
   ngOnInit(): void {
     this.user = this._userService.initUser();
@@ -33,6 +37,10 @@ export class MenuComponent implements OnInit {
     }
   }
 
+
+  addItem(newItem: Clothing) {
+    this.items.push(newItem );
+  }
 
   public logOut(){
     localStorage.clear();
