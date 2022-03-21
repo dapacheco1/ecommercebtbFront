@@ -19,7 +19,7 @@ export class ShoesComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.shoe = this._clthService.initClothing();
+    //this.shoe = this._clthService.initClothing();
     this.getShoes();
   }
 

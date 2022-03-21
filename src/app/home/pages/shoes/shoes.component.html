@@ -7,9 +7,24 @@
             <div class="row img-thumbnail">
                 <h3>{{shoe.name}}</h3>
                 <p>Price:${{shoe.price}}USD</p>
+                <p>Stock: {{shoe.stock}} available</p>
+                <p>Details: {{shoe.detail}}</p>
+                <p>Gender: {{shoe.genre?.genre}}</p>
+                <!-- <div class="input-group">
+                    <span class="input-group-text">
+                        <button class="btn btn-success">
+                            <i class="fa-solid fa-minus"></i>
+                        </button>
+                    </span>
+                    <input type="text" class="form-control" name="stock" [(ngModel)]="shoe.stock">
+                    <span class="input-group-text">
+                        <button class="btn btn-success">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </span>
+                </div> -->
                 <div class="row">
-                    <button class="btn"><i class="fa-solid fa-minus"></i></button>
-                    <input type="text" name="stock" [(ngModel)]="shoe.stock">
+                    <button class="btn btn-primary btn-success">Add cart</button>
                 </div>
             </div>
             

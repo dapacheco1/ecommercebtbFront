@@ -8,6 +8,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { ShoesComponent } from './pages/shoes/shoes.component';
 import { PantsComponent } from './pages/pants/pants.component';
 import { ShirtsComponent } from './pages/shirts/shirts.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ShirtsComponent } from './pages/shirts/shirts.component';
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    FormsModule
   ]
 })
 export class HomeModule { }
