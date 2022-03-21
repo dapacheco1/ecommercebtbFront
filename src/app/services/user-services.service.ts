@@ -37,6 +37,11 @@ export class UserServicesService {
     return this._htttp.post<ResponseServer>(route,this.user);
   }
 
+  validateLoginUser(us:User){
+    const route = this.conn+'users/auth';
+    return this._htttp.post<ResponseServer>(route,us);
+  }
+
 
   buildUserBeforeRegister(us:User,prs:Person,gen:Gender){
     this.user = us;

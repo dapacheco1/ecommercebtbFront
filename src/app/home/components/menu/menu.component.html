@@ -13,13 +13,20 @@
                         <a class="nav-link" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Shoes</a>
+                        <a class="nav-link" [routerLink]="['shoes']">
+                            <i class="fa-solid fa-shoe-prints"></i>
+                            Shoes
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pants</a>
+                        <a class="nav-link" [routerLink]="['pants']">Pants</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Shirts</a>
+                        <a class="nav-link" [routerLink]="['shirts']">
+                            <i class="fa-solid fa-shirt"></i>
+                            
+                            Shirts
+                        </a>
                     </li>
                 </ul>
                 <div class="d-flex me-5">
@@ -27,7 +34,7 @@
                         <i class="fa-solid fa-cart-shopping"></i>
                     </button>
 
-                    <div *ngIf="(1==1) else logged">
+                    <div *ngIf="!menuDataStatus else logged">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
                                 <a class="nav-link" aria-current="page" [routerLink]="['auth/login']">Login</a>
@@ -44,10 +51,10 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    Cliente Name
+                                    {{user.username}}
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                                    <li><a class="dropdown-item" (click)="logOut()">Logout</a></li>
                                     <li><a class="dropdown-item" href="#">Billing</a></li>
                                 </ul>
                             </li>

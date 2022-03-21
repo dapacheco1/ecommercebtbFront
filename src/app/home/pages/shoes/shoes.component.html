@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col" *ngFor="let shoe of shoes">
+            <div class="row img-thumbnail">
+                <img [src]="shoe.image" class="img-fluid">
+            </div>
+            <div class="row img-thumbnail">
+                <h3>{{shoe.name}}</h3>
+                <p>Price:${{shoe.price}}USD</p>
+                <div class="row">
+                    <button class="btn"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" name="stock" [(ngModel)]="shoe.stock">
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
