@@ -16,12 +16,14 @@ export class LogoutGuard implements CanActivate {
       const user = (localStorage.getItem('user'));
 
       if(user){
+
+
         this.router.navigateByUrl('');
         return false;
       }else{
-        
+
         return true;
       }
   }
-  
+
 }

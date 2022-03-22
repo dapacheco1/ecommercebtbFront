@@ -44,14 +44,14 @@ export class ShoesComponent implements OnInit {
     if(this.amounts[index]==0){
       alert("Please select the amount of this products");
     }else{
-      const ax = this._cartService.transformClothingToCart(clot.id,this.amounts[index],clot.price);
+      const ax:any = this._cartService.transformClothingToCart(clot.id,this.amounts[index],clot.price);
       this._cartService.addProduct(ax).subscribe(res=>{
         console.log(res.message);
         alert('Product added to your cart');
       });
     }
-    
-    
+
+
   }
 
 

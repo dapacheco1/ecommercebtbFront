@@ -5,6 +5,8 @@ import { Cart } from '../interfaces/Cart';
 import { Clothing } from '../interfaces/Clothing';
 import { ResponseServer } from '../interfaces/ResponseServer';
 import { User } from '../interfaces/User';
+import { ClothingService } from './clothing.service';
+import { UserServicesService } from './user-services.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,10 @@ export class CartService {
 
   private conn:string;
 
-  constructor(private _htttp:HttpClient) {
+  constructor(
+    private _htttp:HttpClient,
+    private _usr:UserServicesService,
+    private _clt:ClothingService) {
     this.conn = environment.url;
   }
 
@@ -29,11 +34,13 @@ export class CartService {
       status:'',
       created_at:'',
       updated_at:'',
+      user:this._usr.initUser(),
+      clothing:this._clt.initClothing()
 
     };
   }
 
-  
+
   transformClothingToCart(itemId:number,am:number,price:number){
     return this.cart = {
       id:0,
@@ -44,6 +51,8 @@ export class CartService {
       status:'P',
       created_at:'',
       updated_at:'',
+      user:this._usr.initUser(),
+      clothing:this._clt.initClothing()
     }
   }
 
@@ -63,5 +72,10 @@ export class CartService {
     const id = this.getUserId();
     const route = `${this.conn}cart/${id}`;
     return this._htttp.get<ResponseServer>(route);
+  }
+
+  updateUserCart(item:Cart){
+    const route = `${this.conn}cart/update`;
+    return this._htttp.post<ResponseServer>(route,item);
   }
 }

@@ -15,14 +15,14 @@ export class CartComponent implements OnInit {
 
   constructor(
     private _crtService:CartService
-  ) { 
+  ) {
     this.cart = [];
   }
 
   ngOnInit(): void {
 
     this.loadCart();
-    
+
   }
 
 
@@ -36,14 +36,80 @@ export class CartComponent implements OnInit {
       }else{
         alert(res.message);
       }
-      
+
     });
   }
 
   private calcTotal(){
+    this.total = 0;
     this.cart.forEach((item:Cart)=>{
       this.total += item.total;
     });
+  }
+
+
+
+  substractUp(cart:Cart,id:number){
+    cart.amount--;
+    cart.total = cart.clothing?.price * cart.amount;
+    if(cart.amount>=0){
+      if(cart.amount == 0){
+        this.cart.splice(id,1);
+      }
+      this._crtService.updateUserCart(cart).subscribe(res =>{
+        if(res.success){
+          this.cart[id].total = cart.total;
+        }else{
+          alert(res.message);
+        }
+
+      });
+    }
+
+    this.calcTotal();
+
+  }
+
+  addUp(cart:Cart,id:number){
+    cart.amount++;
+    cart.total = cart.clothing?.price * cart.amount;
+
+    this._crtService.updateUserCart(cart).subscribe(res =>{
+      if(res.success){
+        this.cart[id].total = cart.total;
+      }else{
+        alert(res.message);
+      }
+
+    });
+
+    this.calcTotal();
+  }
+
+  updateCart(event:any,cart:Cart,id:number){
+    cart.amount = event.target.value;
+    cart.total = cart.clothing?.price * cart.amount;
+    if(cart.amount>=0){
+      if(cart.amount == 0){
+        this.cart.splice(id,1);
+      }
+      this._crtService.updateUserCart(cart).subscribe(res =>{
+        if(res.success){
+          this.cart[id].total = cart.total;
+        }else{
+          alert(res.message);
+        }
+
+      });
+
+    }else{
+      alert("May need to type an input major to zero");
+    }
+
+
+    this.calcTotal();
+
+
   }
 
 }

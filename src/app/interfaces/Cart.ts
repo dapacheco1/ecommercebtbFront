@@ -10,6 +10,6 @@ export interface Cart{
   status:string,
   created_at:string,
   updated_at:string,
-  user?:User,
-  clothing?:Clothing
+  user:User,
+  clothing:Clothing
 }
