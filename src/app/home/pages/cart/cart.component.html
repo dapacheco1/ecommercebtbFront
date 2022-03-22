@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <h3>Order</h3>
   <table class="table">
     <thead>
@@ -6,21 +6,25 @@
         <th scope="col">#</th>
         <th scope="col">Description</th>
         <th scope="col">Amount</th>
-        <th scope="col">Total</th>
+        <th scope="col">Total of item</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Shoes</td>
-        <td>3</td>
-        <td>350</td>
+      <tr *ngFor="let cr of cart;let i = index">
+        <th >{{i}}</th>
+        <td >{{cr.clothing?.detail}}</td>
+        <td>{{cr.amount}}</td>
+        <td>{{cr.total}}</td>
       </tr>
-
     </tbody>
+    <div class="row mt-3 col-12 col-md-12 col-lg-12">
+      <div class="col">
+        <b>Total to pay:</b><span>${{total}} USD</span>
+      </div>
+    </div>
   </table>
 
-  <div class="row">
+  <div class="row col-12 col-md-12 col-lg-12 mb-4">
     <div class="col">
       <button class="btn btn-danger">
         Cancel Order

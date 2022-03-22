@@ -58,4 +58,10 @@ export class CartService {
     const route = `${this.conn}cart`;
     return this._htttp.post<ResponseServer>(route,item);
   }
+
+  getUserCart(){
+    const id = this.getUserId();
+    const route = `${this.conn}cart/${id}`;
+    return this._htttp.get<ResponseServer>(route);
+  }
 }

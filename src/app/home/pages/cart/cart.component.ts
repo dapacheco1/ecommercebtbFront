@@ -10,46 +10,40 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  public cart!:Cart;
+  public cart!:Cart[];
+  public total:number = 0;
 
   constructor(
     private _crtService:CartService
-  ) { }
+  ) { 
+    this.cart = [];
+  }
 
   ngOnInit(): void {
 
-    this.loadItems();
-
+    this.loadCart();
+    
   }
 
-  private loadItems(){
-    const aux:any = localStorage.getItem('items');
-    const usaux:any = localStorage.getItem('user');
-    const cr:any = JSON.parse(aux);
-    const cu:any = JSON.parse(usaux);
 
-    const shoes:Clothing[] = [];
-    const pants:Clothing[] = [];
-    const shirts:Clothing[] = [];
-
-    //find amount by category
-    cr.forEach((element:Clothing) =>{
-      switch(element.category_id){
-          case 1:
-            shoes.push(element);
-            break;
-          case 2:
-            pants.push(element);
-            break;
-          case 3:
-            shirts.push(element);
-            break;
-          default:
-            console.log('not available');
-            break;
+  loadCart(){
+    this._crtService.getUserCart().subscribe(res=>{
+      if(res.success){
+        res.data.forEach((item:Cart) => {
+          this.cart.push(item);
+        });
+        this.calcTotal();
+      }else{
+        alert(res.message);
       }
+      
     });
-    console.log(shoes);
+  }
+
+  private calcTotal(){
+    this.cart.forEach((item:Cart)=>{
+      this.total += item.total;
+    });
   }
 
 }
