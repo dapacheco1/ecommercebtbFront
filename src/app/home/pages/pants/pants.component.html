@@ -2,24 +2,32 @@
   <h3>Pants</h3>
   <app-filter-by-gender (filterEv)="filter($event)"></app-filter-by-gender>
   <div class="row">
-      <div class="col" *ngFor="let pant of pants | filter: filtergender">
-          <div class="row img-thumbnail">
-              <img [src]="pant.image" class="img-fluid">
-          </div>
-          <div class="row img-thumbnail">
-              <h3>{{pant.name}}</h3>
-              <p>Price:${{pant.price}}USD</p>
-              <p>Stock: {{pant.stock}} available</p>
-              <p>Details: {{pant.detail}}</p>
-              <p>Gender: {{pant.genre?.genre}}</p>
-              <div class="row">
-                  <button class="btn btn-primary btn-success" (click)="addCart(pant)">
-                    <i class="fa-solid fa-cart-plus"></i>
-                    Add cart
-                  </button>
-              </div>
-          </div>
-
-      </div>
-  </div>
+    <div class="col-12 col-md-6 col-lg-3 mb-4" *ngFor="let pant of pants | filter: filtergender" >
+        <div class="card w-100">
+            <div style="height: 275px; overflow: hidden;" class="w-100">
+                <img [src]="pant.image" class="card-img-top">
+            </div>
+            
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <h3>{{pant.name}}</h3>
+                        <div class="d-flex justify-content-between"><b>Price: </b> <span>${{pant.price}}USD</span></div>
+                        <div class="d-flex justify-content-between"><b>Stock:</b> <span>{{pant.stock}} available</span></div>
+                        <div class="d-flex justify-content-between"><b>Size:</b> <span>{{pant.size.size}}</span></div>
+                        <div class="d-flex justify-content-between"><b>Details:</b> <span>{{pant.detail}}</span></div>
+                        <div class="d-flex justify-content-between"><b>Gender:</b>
+                            <span>{{pant.genre?.genre}}</span></div>
+                        <div class="row mt-3">
+                            <button class="btn btn-primary btn-success" (click)="addCart(pant)">
+                              <i class="fa-solid fa-cart-plus"></i>
+                              Add cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>

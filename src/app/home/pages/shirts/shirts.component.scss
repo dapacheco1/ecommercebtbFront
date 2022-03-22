@@ -1,0 +1,10 @@
+.card{
+    box-shadow: 0 0 10px rgb(43, 43, 43);
+    transition: transform 250ms ease-in;
+    cursor: pointer;
+}
+
+.card:hover{
+    transform: scale(1.03);
+    transition: transform 250ms ease-in;
+}

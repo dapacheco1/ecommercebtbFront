@@ -11,6 +11,7 @@ import { ClothingService } from 'src/app/services/clothing.service';
 export class ShirtsComponent implements OnInit {
   public shirts!:Clothing[];
   public filtergender = '';
+  public am:number = 0;
 
   constructor(
     private _clthService:ClothingService,
@@ -35,8 +36,12 @@ export class ShirtsComponent implements OnInit {
 
 
   addCart(clot:Clothing){
-    this._cartService.addProduct(clot);
-    alert('Product added to your cart');
+    const ax = this._cartService.transformClothingToCart(clot.id,this.am,clot.price);
+    this._cartService.addProduct(ax).subscribe(res=>{
+      console.log(res.message);
+      alert('Product added to your cart');
+    });
+    
   }
 
   filter(ev:any){

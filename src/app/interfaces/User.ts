@@ -1,6 +1,7 @@
 import { Person } from "./Person";
 
 export interface User{
+  id:number,
   person_id:number,
   rol_id:number,
   status:string,

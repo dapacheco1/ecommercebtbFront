@@ -1,5 +1,5 @@
-<div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">BTB e-com</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -10,19 +10,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" id="home" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['shoes']">
+                        <a class="nav-link" id="shoes" [routerLink]="['shoes']">
                             <i class="fa-solid fa-shoe-prints"></i>
                             Shoes
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['pants']">Pants</a>
+                        <a class="nav-link" id="pants" [routerLink]="['pants']">Pants</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['shirts']">
+                        <a class="nav-link" id="shirts" [routerLink]="['shirts']">
                             <i class="fa-solid fa-shirt"></i>
 
                             Shirts
@@ -67,4 +67,4 @@
             </div>
         </div>
     </nav>
-</div>
+

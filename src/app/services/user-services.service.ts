@@ -20,6 +20,7 @@ export class UserServicesService {
 
   initUser(){
     return this.user = {
+      id:0,
       person_id:0,//dont change on register form
       rol_id:2, //default rol for register form, only change if ROL table change
       status:'A',

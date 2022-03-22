@@ -14,6 +14,7 @@ export class ShoesComponent implements OnInit {
 
   public shoes!:Clothing[];
   public filtergender = '';
+  public am:number = 0;
 
   constructor(
     private _clthService:ClothingService,
@@ -29,7 +30,6 @@ export class ShoesComponent implements OnInit {
 
   getShoes(){
     this._clthService.getClothesByCategory(1).subscribe(res=>{
-      console.log(res);
       res.data.forEach((element:Clothing) => {
         this.shoes.push(element);
       });
@@ -37,8 +37,12 @@ export class ShoesComponent implements OnInit {
   }
 
   addCart(clot:Clothing){
-    this._cartService.addProduct(clot);
-    alert('Product added to your cart');
+    const ax = this._cartService.transformClothingToCart(clot.id,this.am,clot.price);
+    this._cartService.addProduct(ax).subscribe(res=>{
+      console.log(res.message);
+      alert('Product added to your cart');
+    });
+    
   }
 
 

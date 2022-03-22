@@ -1,0 +1,21 @@
+#shoes,#shirts,#pants,#home{
+    position:relative;
+}
+
+#shoes:hover::before,#shirts:hover::before,#pants:hover::before,#home:hover::before{
+    width: 100%;
+    transform: width;
+    transition: all 250ms ease-out;
+}
+
+#shoes::before,#shirts::before,#pants::before,#home::before{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0px;
+    height: 2px;
+    background-color: #aaffd0;
+    content: '';
+    transition: all 250ms ease-out;
+}
+
