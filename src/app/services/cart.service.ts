@@ -78,4 +78,10 @@ export class CartService {
     const route = `${this.conn}cart/update`;
     return this._htttp.post<ResponseServer>(route,item);
   }
+
+  deleteCartByUserId(){
+    const id = this.getUserId();
+    const route = `${this.conn}cart/${id}`;
+    return this._htttp.delete<ResponseServer>(route);
+  }
 }

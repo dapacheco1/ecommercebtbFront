@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Cart } from 'src/app/interfaces/Cart';
 import { Clothing } from 'src/app/interfaces/Clothing';
 import { CartService } from 'src/app/services/cart.service';
@@ -14,7 +15,8 @@ export class CartComponent implements OnInit {
   public total:number = 0;
 
   constructor(
-    private _crtService:CartService
+    private _crtService:CartService,
+    private router:Router,
   ) {
     this.cart = [];
   }
@@ -51,8 +53,9 @@ export class CartComponent implements OnInit {
 
   substractUp(cart:Cart,id:number){
     cart.amount--;
-    cart.total = cart.clothing?.price * cart.amount;
+
     if(cart.amount>=0){
+      cart.total = cart.clothing?.price * cart.amount;
       if(cart.amount == 0){
         this.cart.splice(id,1);
       }
@@ -88,8 +91,9 @@ export class CartComponent implements OnInit {
 
   updateCart(event:any,cart:Cart,id:number){
     cart.amount = event.target.value;
-    cart.total = cart.clothing?.price * cart.amount;
+
     if(cart.amount>=0){
+      cart.total = cart.clothing?.price * cart.amount;
       if(cart.amount == 0){
         this.cart.splice(id,1);
       }
@@ -112,4 +116,17 @@ export class CartComponent implements OnInit {
 
   }
 
+
+  redirectToBilling(){
+    this.router.navigateByUrl('sell');
+  }
+
+  deleteAll(){
+    this._crtService.deleteCartByUserId().subscribe(res =>{
+      console.log(res);
+    });
+
+    this.cart = [];
+    this.total  = 0;
+  }
 }

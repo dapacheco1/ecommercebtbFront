@@ -31,12 +31,12 @@
     </div>
   </table>
 
-  <div class="row col-12 col-md-12 col-lg-12 mb-4">
+  <div class="row col-12 col-md-12 col-lg-12 mb-4" *ngIf="cart.length!=0">
     <div class="col">
-      <button class="btn btn-danger ">
+      <button class="btn btn-danger " (click)="deleteAll()">
         Cancel Order
       </button>
-      <button class="btn btn-success mx-2">
+      <button class="btn btn-success mx-2" (click)="redirectToBilling()">
         Buy Now!
       </button>
     </div>
