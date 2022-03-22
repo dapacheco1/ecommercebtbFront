@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Clothing } from 'src/app/interfaces/Clothing';
 import { CartService } from 'src/app/services/cart.service';
 import { ClothingService } from 'src/app/services/clothing.service';
+import { Output, EventEmitter } from '@angular/core';
 
 
 @Component({
@@ -38,6 +39,11 @@ export class ShoesComponent implements OnInit {
   addCart(clot:Clothing){
     this._cartService.addProduct(clot);
     alert('Product added to your cart');
+  }
+
+
+  filter(ev:any){
+    this.filtergender =ev;
   }
 
 

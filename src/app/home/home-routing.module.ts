@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { CartComponent } from './pages/cart/cart.component';
 import { IndexComponent } from './pages/index/index.component';
 import { PantsComponent } from './pages/pants/pants.component';
 import { ShirtsComponent } from './pages/shirts/shirts.component';
@@ -31,9 +32,13 @@ const routes: Routes = [
       {
         path:'shirts',
         component:ShirtsComponent
+      },
+      {
+        path:'cart',
+        component:CartComponent
       }
     ]
-    
+
   },
 ];
 

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Cart } from '../interfaces/Cart';
 import { Clothing } from '../interfaces/Clothing';
 
 @Injectable({
@@ -6,9 +7,24 @@ import { Clothing } from '../interfaces/Clothing';
 })
 export class CartService {
   private items!:Clothing[];
+  private cart!:Cart;
 
   constructor() {
     this.initItems();
+  }
+
+  public initCart(){
+    return this.cart = {
+      id:0,
+      user_id:0,
+      clothing_id:0,
+      amount:0,
+      total:0,
+      status:'',
+      created_at:'',
+      updated_at:'',
+
+    };
   }
 
   private initItems(){

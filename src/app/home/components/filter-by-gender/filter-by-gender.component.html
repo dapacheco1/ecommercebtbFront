@@ -1,0 +1,20 @@
+<div class="row">
+  Filter by gender
+</div>
+<div class="row">
+  <div class="input-group mb-3 mt-3 w-25">
+
+    <span class="input-group-text" id="basic-addon1">
+      <i class="fa-solid fa-filter"></i>
+    </span>
+
+    <select class="form-select" aria-label="Default select example" name="select" (change)="filter($event)">
+      <option value="">All genders</option>
+      <option value="F">Female</option>
+      <option value="M">Male</option>
+    </select>
+
+  </div>
+</div>
+
+

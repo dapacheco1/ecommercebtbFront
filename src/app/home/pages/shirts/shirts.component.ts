@@ -10,6 +10,7 @@ import { ClothingService } from 'src/app/services/clothing.service';
 })
 export class ShirtsComponent implements OnInit {
   public shirts!:Clothing[];
+  public filtergender = '';
 
   constructor(
     private _clthService:ClothingService,
@@ -36,6 +37,10 @@ export class ShirtsComponent implements OnInit {
   addCart(clot:Clothing){
     this._cartService.addProduct(clot);
     alert('Product added to your cart');
+  }
+
+  filter(ev:any){
+    this.filtergender =ev;
   }
 
 }

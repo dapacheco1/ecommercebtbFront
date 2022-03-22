@@ -1,7 +1,8 @@
 <div class="container-fluid">
-
+  <h3>Shirts</h3>
+  <app-filter-by-gender (filterEv)="filter($event)"></app-filter-by-gender>
   <div class="row">
-      <div class="col" *ngFor="let shirt of shirts">
+      <div class="col" *ngFor="let shirt of shirts | filter: filtergender">
           <div class="row img-thumbnail">
               <img [src]="shirt.image" class="img-fluid">
           </div>
