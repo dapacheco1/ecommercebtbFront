@@ -32,13 +32,12 @@ export class BillingComponent implements OnInit {
   }
 
   loadHistorySale(){
+    this.history = [];
     this._blService.historySale().subscribe(res=>{
       if(res.success){
         res.data.forEach((item:Sales)=>{
           this.history.push(item);
         });
-      }else{
-        alert(res.message);
       }
     });
 
@@ -85,8 +84,10 @@ export class BillingComponent implements OnInit {
       if(res.success){
         this.sale = this._blService.initSale();
         this.loadHistorySale();
+      }else{
+        alert(res.message);
       }
-      alert(res.message);
+
 
     });
   }

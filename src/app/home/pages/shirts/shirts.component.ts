@@ -43,7 +43,6 @@ export class ShirtsComponent implements OnInit {
     }else{
       const ax:any = this._cartService.transformClothingToCart(clot.id,this.amounts[index],clot.price);
       this._cartService.addProduct(ax).subscribe(res=>{
-        console.log(res.message);
         alert('Product added to your cart');
       });
     }
