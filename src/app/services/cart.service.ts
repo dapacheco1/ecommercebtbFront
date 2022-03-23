@@ -57,7 +57,7 @@ export class CartService {
   }
 
 
-  private getUserId(){
+  public getUserId(){
     const aux:any = localStorage.getItem('user');
     const us:User = JSON.parse(aux);
     return us.id;
