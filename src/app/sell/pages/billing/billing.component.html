@@ -45,9 +45,9 @@
           <b  class="fs-3">Date</b><b class="fs-3">Price</b>
         </div>
       </div>
-      <div class="row col-12 text-primary">
+      <div class="row col-12 text-primary" *ngFor="let h of history">
         <div class="d-flex justify-content-between">
-          <span>24/12/2021</span><span>$134.40 USD</span>
+          <span>{{h.saleDate}}</span><span>$ {{h.total}} USD</span>
         </div>
       </div>
     </div>

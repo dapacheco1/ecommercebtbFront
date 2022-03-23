@@ -13,6 +13,7 @@ import { UserServicesService } from 'src/app/services/user-services.service';
 })
 export class BillingComponent implements OnInit {
   public sale!:Sales;
+  public history!:Sales[];
   public cart!:Cart[];
   public total:number = 0;
 
@@ -23,9 +24,24 @@ export class BillingComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.history = [];
     this.sale = this._blService.initSale();
     this.cart = [];
     this.loadDataSale();
+    this.loadHistorySale();
+  }
+
+  loadHistorySale(){
+    this._blService.historySale().subscribe(res=>{
+      if(res.success){
+        res.data.forEach((item:Sales)=>{
+          this.history.push(item);
+        });
+      }else{
+        alert(res.message);
+      }
+    });
+
   }
 
 
@@ -68,6 +84,7 @@ export class BillingComponent implements OnInit {
     this._blService.registerSale(this.sale).subscribe(res=>{
       if(res.success){
         this.sale = this._blService.initSale();
+        this.loadHistorySale();
       }
       alert(res.message);
 

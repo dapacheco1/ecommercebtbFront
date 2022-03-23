@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { ResponseServer } from '../interfaces/ResponseServer';
 import { Sales } from '../interfaces/Sales';
+import { CartService } from './cart.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class BillingService {
 
   constructor(
     private _htttp:HttpClient,
+    private _cartService:CartService
   ) {
     this.conn = environment.url;
   }
@@ -44,5 +46,11 @@ export class BillingService {
   registerSale(sale:Sales){
     const route = `${this.conn}sell`;
     return this._htttp.post<ResponseServer>(route,sale);
+  }
+
+  historySale(){
+    const id = this._cartService.getUserId();
+    const route = `${this.conn}sell/${id}`;
+    return this._htttp.get<ResponseServer>(route);
   }
 }
