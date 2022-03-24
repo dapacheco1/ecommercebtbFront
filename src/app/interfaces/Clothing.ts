@@ -17,5 +17,5 @@ export interface Clothing{
     updated_at:string,
     category?:Category,
     size?:Size,
-    genre?:Gender
+    genre?:Gender;
 }

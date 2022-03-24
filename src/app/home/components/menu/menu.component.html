@@ -7,22 +7,23 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" id="home" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="shoes" [routerLink]="['shoes']">
+                        <a class="nav-link" id="shoes" (click)="redirect(1)">
                             <i class="fa-solid fa-shoe-prints"></i>
                             Shoes
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="pants" [routerLink]="['pants']">Pants</a>
+                        <a class="nav-link" id="pants" (click)="redirect(2)">Pants</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="shirts" [routerLink]="['shirts']">
+                        <a class="nav-link" id="shirts" (click)="redirect(3)">
                             <i class="fa-solid fa-shirt"></i>
 
                             Shirts

@@ -8,14 +8,14 @@ const routes: Routes = [
     loadChildren: ()=>import('./auth/auth.module').then(m=>m.AuthModule)
   },
   {
-    path:'',
-    loadChildren: ()=>import('./home/home.module').then(m=>m.HomeModule)
-  },
-  {
     path:'sell',
     loadChildren:()=>import('./sell/sell.module').then(m=>m.SellModule),
 
-  }
+  },
+  {
+    path:'',
+    loadChildren: ()=>import('./home/home.module').then(m=>m.HomeModule)
+  },
 ];
 
 @NgModule({

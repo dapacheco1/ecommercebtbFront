@@ -18,4 +18,5 @@ export class FilterByGenderComponent implements OnInit {
     this.filterEv.emit(value.target.value);
   }
 
+
 }

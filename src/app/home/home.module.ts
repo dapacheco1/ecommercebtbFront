@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { FilterPipe } from '../pipes/filter.pipe';
 import { FilterByGenderComponent } from './components/filter-by-gender/filter-by-gender.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { ClothingComponent } from './components/clothing/clothing.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { CartComponent } from './pages/cart/cart.component';
     ShirtsComponent,
     FilterPipe,
     FilterByGenderComponent,
-    CartComponent
+    CartComponent,
+    ClothingComponent
   ],
   imports: [
     CommonModule,
