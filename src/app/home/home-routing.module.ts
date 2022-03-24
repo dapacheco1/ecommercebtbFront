@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginGuard } from '../auth/guard/login.guard';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { IndexComponent } from './pages/index/index.component';
@@ -35,7 +36,8 @@ const routes: Routes = [
       },
       {
         path:'cart',
-        component:CartComponent
+        component:CartComponent,
+        canActivate:[LoginGuard]
       }
     ]
 
