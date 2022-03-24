@@ -81,6 +81,8 @@ export class BillingComponent implements OnInit {
   makeSale(){
     this._blService.buildSale(this.sale);
     this._blService.registerSale(this.sale).subscribe(res=>{
+      console.log(res);
+
       if(res.success){
         this.sale = this._blService.initSale();
         this.loadHistorySale();
