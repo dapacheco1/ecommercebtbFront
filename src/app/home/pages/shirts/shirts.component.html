@@ -1,6 +1,10 @@
 <div class="container-fluid">
-  <h3>Shirts</h3>
-  <app-filter-by-gender (filterEv)="filter($event)"></app-filter-by-gender>
+  <div class="row my-4 bg-light" id="filter">
+    <div class="col-12">
+      <h3>Shirts</h3>
+      <app-filter-by-gender (filterEv)="filter($event)"></app-filter-by-gender>
+    </div>
+  </div>
   <div class="row">
         <div class="col-12 col-md-6 col-lg-3 mb-4" *ngFor="let shirt of shirts | filter: filtergender;let i = index" >
             <div class="card w-100">

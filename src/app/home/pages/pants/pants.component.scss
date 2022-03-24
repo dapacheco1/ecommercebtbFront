@@ -8,3 +8,8 @@
     transform: scale(1.03);
     transition: transform 250ms ease-in;
 }
+
+#filter{
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgb(43, 43, 43);
+}
