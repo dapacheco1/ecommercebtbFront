@@ -58,7 +58,7 @@ export class BillingComponent implements OnInit {
         this.calcTotal();
         this.sale.subtotal = this.total;
         this.sale.taxIVA = (Number)((this.total * 0.12).toFixed(2));
-        this.sale.total = this.sale.subtotal + this.sale.taxIVA;
+        this.sale.total = (Number)((this.sale.subtotal + this.sale.taxIVA).toFixed(2));
 
       }else{
         alert(res.message);
@@ -81,8 +81,6 @@ export class BillingComponent implements OnInit {
   makeSale(){
     this._blService.buildSale(this.sale);
     this._blService.registerSale(this.sale).subscribe(res=>{
-      console.log(res);
-
       if(res.success){
         this.sale = this._blService.initSale();
         this.loadHistorySale();

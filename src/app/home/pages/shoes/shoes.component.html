@@ -6,9 +6,9 @@
         <div class="col-12 col-md-6 col-lg-3 mb-4" *ngFor="let shoe of shoes | filter: filtergender;let i = index" >
             <div class="card w-100">
                 <div style="height: 275px; overflow: hidden;" class="w-100">
-                    <img [src]="shoe.image" class="card-img-top">
+                    <img [src]="shoe.image" class="card-img-top" >
                 </div>
-                
+
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
@@ -20,15 +20,17 @@
                             <div class="d-flex justify-content-between"><b>Gender:</b>
                                 <span>{{shoe.genre?.genre}}</span></div>
                             <div class="row col-12 mt-3">
-                                <div class="input-group mb-3">
+                              <p *ngIf="shoe.stock==0" class="text-danger">*This product is sold out</p>
+                                <div class="input-group mb-3" *ngIf="shoe.stock!=0">
                                     <button class="input-group-text" class="btn btn-primary" id="basic-addon1" (click)="substract(i)">-</button>
-                                    <input type="number" min="0" step="1" class="form-control" placeholder="Amount" 
+                                    <input type="number" min="0" step="1" class="form-control" placeholder="Amount"
                                     aria-label="amount" aria-describedby="basic-addon1" [(ngModel)]="amounts[i]">
                                     <button class="input-group-text" class="btn btn-primary" id="basic-addon1" (click)="add(i)">+</button>
+
                                 </div>
                             </div>
                             <div class="row mt-3">
-                                <button class="btn btn-primary btn-success" (click)="addCart(shoe,i)">
+                                <button class="btn btn-primary btn-success" (click)="addCart(shoe,i)" *ngIf="shoe.stock!=0">
                                   <i class="fa-solid fa-cart-plus"></i>
                                   Add cart
                                 </button>
