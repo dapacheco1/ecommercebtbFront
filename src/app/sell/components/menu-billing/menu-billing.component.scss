@@ -1,0 +1,21 @@
+#op1,#op2{
+  position:relative;
+}
+
+#op1:hover::before,#op2:hover::before{
+  width: 100%;
+  transform: width;
+  transition: all 250ms ease-out;
+}
+
+#op1::before,#op2::before{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0px;
+  height: 2px;
+  background-color: #aaffd0;
+  content: '';
+  transition: all 250ms ease-out;
+}
+
