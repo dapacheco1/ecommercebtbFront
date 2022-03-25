@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { of } from 'rxjs';
 import { Category } from 'src/app/interfaces/Category';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { FormValidationsService } from 'src/app/services/form-validations.service';
@@ -12,11 +13,17 @@ export class CategoryComponent implements OnInit {
 
   public cats:Category[] = [];
   public categoryForm!:Category;
+  public formStatus:boolean= true;
+
+  public msg:string = '';
+  public msgModal:string = `Are you sure that you want to delete this category?
+  this action cannot be undone after this.`;
+  public InId:number  = 0;
 
   constructor(
     private _catService:CategoriesService,
     private _valService:FormValidationsService
-  ) { 
+  ) {
     this.categoryForm = this._catService.initCategory();
   }
 
@@ -31,7 +38,7 @@ export class CategoryComponent implements OnInit {
         res.data.forEach((item:Category) => {
           this.cats.push(item);
         });
-        
+
       }else{
         alert(res.message);
       }
@@ -40,16 +47,25 @@ export class CategoryComponent implements OnInit {
 
 
   validateForm(){
+    this.msg = '';
     const name = this._valService.onlyLetters(this.categoryForm.detail,"catname");
     const slug = this._valService.onlyLetters(this.categoryForm.slug,"slugname");
 
     if(name.success && slug.success){
+      this.formStatus = true;
       return true;
     }else{
-      alert(name.message+slug.message);
+      this.formStatus = false;
+      if(!name.success){
+        this.msg += name.message;
+      }
+
+      if(!slug.success){
+        this.msg += '->'+slug.message
+      }
       return false;
     }
-    
+
   }
 
   saveCategory(){
@@ -57,22 +73,13 @@ export class CategoryComponent implements OnInit {
       this._catService.addCategory(this.categoryForm).subscribe(res=>{
         if(res.success){
           this.reloadInfo();
-          
+
         }else{
           alert(res.message);
-          
+
         }
       });
     }
-  }
-
-  deleteCat(id:number){
-    this._catService.deleteCategoryById(id).subscribe(res=>{
-      if(res.success){
-        this.reloadInfo();
-      }
-      alert(res.message);
-    });
   }
 
   reloadInfo(){
@@ -80,6 +87,16 @@ export class CategoryComponent implements OnInit {
     this.cats = [];
     this.loadCurrentCategories();
     this.categoryForm = this._catService.initCategory();
+  }
+
+  isDeleted(event:any){
+    if(event == 'deleted'){
+      this.reloadInfo();
+    }
+  }
+
+  assignId(id:number){
+    this.InId = id;
   }
 
 }
