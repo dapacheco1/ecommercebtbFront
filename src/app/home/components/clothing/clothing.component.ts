@@ -20,6 +20,7 @@ export class ClothingComponent implements OnInit {
   private sub: any;
   public id:number = 0;
 
+  public st:boolean = false;
   constructor(
     private _clthService:ClothingService,
     private _cartService:CartService,
@@ -30,22 +31,23 @@ export class ClothingComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    
+
     this.id = 0;
-    
+
     this.sub = this.route.params.subscribe(params => {
-      this.id = +params['id']; 
+      this.id = +params['id'];
       this.getClothes();
+      this.filter('');
       // In a real app: dispatch action to load the details here.
    });
-    
+
   }
 
   getClothes(){
     this.clothes = [];
     this.amounts  =[];
     this._clthService.getClothesByCategory(this.id).subscribe(res=>{
-      
+
       if(res.success){
         this.clothes = res.data;
         this.clothesAux = this.clothes.map( (element: any) => {
@@ -95,9 +97,9 @@ export class ClothingComponent implements OnInit {
 
 
   ngOnDestroy() {
-    
+
     this.sub.unsubscribe();
-    
+
   }
 
 }

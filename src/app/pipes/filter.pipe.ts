@@ -10,6 +10,7 @@ export class FilterPipe implements PipeTransform {
     if (!items || !filter) {
         return items;
     }
+
     return items.filter((item:any) => {
       return item.genre?.genre.includes(filter);
     });
