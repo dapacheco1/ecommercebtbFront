@@ -31,27 +31,41 @@
               ></button>
             </div>
             <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="mb-3">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-4 col-lg-4">
-                                <label for="catname" class="form-label">Category name: </label>
-                            </div>
-                            <div class="col-sm-12 col-md-8 col-lg-8">
-                                <input type="text" class="form-control" id="catname" >  
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-sm-12 col-md-4 col-lg-4">
-                                <label for="catname" class="form-label">Slug name: </label>
-                            </div>
-                            <div class="col-sm-12 col-md-8 col-lg-8">
-                                <input type="text" class="form-control" id="catname" >  
-                            </div>
-                        </div>
+              <div class="container-fluid">
+                <div class="mb-3">
+                  <div class="row mb-3">
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                      <label for="catname" class="form-label"
+                        >Category name:
+                      </label>
                     </div>
+                    <div class="col-sm-12 col-md-8 col-lg-8">
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="catname"
+                        [(ngModel)]="categoryForm.detail"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                      <label for="slugname" class="form-label"
+                        >Slug name:
+                      </label>
+                    </div>
+                    <div class="col-sm-12 col-md-8 col-lg-8">
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="slugname"
+                        [(ngModel)]="categoryForm.slug"
+                      />
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
             <div class="modal-footer">
               <button
@@ -61,7 +75,12 @@
               >
                 Close
               </button>
-              <button type="button" class="btn btn-primary">
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="saveCategory()"
+                data-bs-dismiss="modal"
+              >
                 Save category
               </button>
             </div>
@@ -78,6 +97,7 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Category name</th>
+            <th scope="col">Slug name</th>
             <th scope="col">Creation Date</th>
             <th scope="col">Status</th>
             <th scope="col">Actions</th>
@@ -87,13 +107,14 @@
           <tr *ngFor="let cat of cats; let i = index">
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ cat.detail }}</td>
+            <td>{{cat.slug}}</td>
             <td>{{ cat.created_at }}</td>
             <td>{{ cat.status }}</td>
             <td>
               <button class="btn btn-primary">
                 <i class="fa-solid fa-pencil"></i>
               </button>
-              <button class="btn btn-danger">
+              <button class="btn btn-danger" (click)="deleteCat(cat.id)">
                 <i class="fa-solid fa-trash"></i>
               </button>
             </td>

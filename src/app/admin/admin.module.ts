@@ -5,6 +5,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AdminMenuComponent } from './components/admin-menu/admin-menu.component';
 import { BaseAdminComponent } from './components/base-admin/base-admin.component';
 import { CategoryComponent } from './pages/category/category.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CategoryComponent } from './pages/category/category.component';
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule
   ]
 })
 export class AdminModule { }

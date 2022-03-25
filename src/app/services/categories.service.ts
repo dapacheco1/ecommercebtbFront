@@ -22,7 +22,7 @@ export class CategoriesService {
       id:0,
       slug:'',
       detail:'',
-      status:'',
+      status:'A',
       created_at:'',
       updated_at:''
     };
@@ -31,5 +31,15 @@ export class CategoriesService {
   getCategories(){
     const route = `${this.conn}categories`;
     return this._htttp.get<ResponseServer>(route);
+  }
+
+  addCategory(cat:Category){
+    const route = `${this.conn}categories`;
+    return this._htttp.post<ResponseServer>(route,cat);
+  }
+
+  deleteCategoryById(id:number){
+    const route = `${this.conn}categories/${id}`;
+    return this._htttp.delete<ResponseServer>(route);
   }
 }
