@@ -13,8 +13,8 @@
                     <li class="nav-item">
                         <a class="nav-link" id="home" aria-current="page" href="#">Home</a>
                     </li>
-                    <li class="nav-item" *ngFor="let cat of cats">
-                        <a  class="nav-link cat" (click)="redirect(cat.id)">
+                    <li class="nav-item" *ngFor="let cat of cats" >
+                        <a *ngIf="cat.status=='A'" class="nav-link cat" (click)="redirect(cat.slug)">
                             {{cat.detail}}
                         </a>
                     </li>

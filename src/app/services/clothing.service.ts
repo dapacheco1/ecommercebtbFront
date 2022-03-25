@@ -35,7 +35,7 @@ export class ClothingService {
     }
   }
 
-  getClothesByCategory(id:number){
+  getClothesByCategory(id:string){
     const route = `${this.conn}clothing/${id}`;
     return this._htttp.get<ResponseServer>(route);
   }

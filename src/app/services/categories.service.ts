@@ -20,6 +20,7 @@ export class CategoriesService {
   initCategory(){
     return this.cat = {
       id:0,
+      slug:'',
       detail:'',
       status:'',
       created_at:'',

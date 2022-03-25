@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Category } from 'src/app/interfaces/Category';
+import { CategoriesService } from 'src/app/services/categories.service';
 
 @Component({
   selector: 'app-category',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryComponent implements OnInit {
 
-  constructor() { }
+  public cats:Category[] = [];
+
+  constructor(
+    private _catService:CategoriesService
+  ) { 
+
+  }
 
   ngOnInit(): void {
+    this.loadCurrentCategories();
+  }
+
+
+  loadCurrentCategories(){
+    this._catService.getCategories().subscribe(res=>{
+      if(res.success){
+        res.data.forEach((item:Category) => {
+          this.cats.push(item);
+        });
+        
+      }else{
+        alert(res.message);
+      }
+    });
   }
 
 }

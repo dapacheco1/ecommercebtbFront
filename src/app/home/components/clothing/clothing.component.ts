@@ -16,9 +16,8 @@ export class ClothingComponent implements OnInit {
 
   public filtergender = '';
   public am:number = 0;
-  public amounts!:number[];
   private sub: any;
-  public id:number = 0;
+  public id:string = '';
 
   public st:boolean = false;
   constructor(
@@ -27,15 +26,14 @@ export class ClothingComponent implements OnInit {
     private route:ActivatedRoute
   ) {
     this.clothes = [];
-    this.amounts = [];
    }
 
   ngOnInit(): void {
 
-    this.id = 0;
+    this.id = '';
 
     this.sub = this.route.params.subscribe(params => {
-      this.id = +params['id'];
+      this.id = params['slug'];
       this.getClothes();
       this.filter('');
       // In a real app: dispatch action to load the details here.
@@ -58,10 +56,10 @@ export class ClothingComponent implements OnInit {
   }
 
   addCart(clot:Clothing,index:number){
-    if(this.amounts[index]==0){
+    if(this.clothesAux[index].amount==0){
       alert("Please select the amount of this products");
     }else{
-      const ax:any = this._cartService.transformClothingToCart(clot.id,this.amounts[index],clot.price);
+      const ax:any = this._cartService.transformClothingToCart(clot.id,this.clothesAux[index].amount,clot.price);
       this._cartService.addProduct(ax).subscribe(res=>{
         alert('Product added to your cart');
       });

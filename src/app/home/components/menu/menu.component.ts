@@ -55,7 +55,7 @@ export class MenuComponent implements OnInit {
 
 
 
-  redirect(cat:number){
+  redirect(cat:string){
     this.router.navigateByUrl(`/category/${cat}`);
   }
 

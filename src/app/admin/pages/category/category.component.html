@@ -1,1 +1,105 @@
-<p>category works!</p>
+<div class="container-fluid">
+  <div class="row px-md-5 px-lg-5">
+    <div class="col mt-3">
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#addCategory"
+      >
+        New Category
+      </button>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="addCategory"
+        tabindex="-1"
+        aria-labelledby="lblCategory"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Category Form</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4 col-lg-4">
+                                <label for="catname" class="form-label">Category name: </label>
+                            </div>
+                            <div class="col-sm-12 col-md-8 col-lg-8">
+                                <input type="text" class="form-control" id="catname" >  
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4 col-lg-4">
+                                <label for="catname" class="form-label">Slug name: </label>
+                            </div>
+                            <div class="col-sm-12 col-md-8 col-lg-8">
+                                <input type="text" class="form-control" id="catname" >  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">
+                Save category
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row px-md-5 px-lg-5">
+    <div class="table-responsive bg-light my-4">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Category name</th>
+            <th scope="col">Creation Date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cat of cats; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ cat.detail }}</td>
+            <td>{{ cat.created_at }}</td>
+            <td>{{ cat.status }}</td>
+            <td>
+              <button class="btn btn-primary">
+                <i class="fa-solid fa-pencil"></i>
+              </button>
+              <button class="btn btn-danger">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
