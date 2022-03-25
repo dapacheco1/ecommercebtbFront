@@ -11,12 +11,18 @@
       <span class="input-group-text" id="basic-addon1">
         <i class="fa-solid fa-filter"></i>
       </span>
-  
-      <select class="form-select" aria-label="Default select example" name="select" (change)="filter($event)" >
+
+      <!-- with ngmodel sent to parent the selected value, and when the parent
+      filter the products and load a new category clean category -->
+      <select class="form-select" aria-label="gender select"  (change)="filter(val)"  [(ngModel)]="val">
+        <option value="">All genders</option>
+        <option *ngFor="let gender of genders" [ngValue]="gender.genre">{{gender.genre}}</option>
+      </select>
+      <!-- <select class="form-select" aria-label="Default select example" name="select" (change)="filter($event)" >
         <option value="" selected>All genders</option>
         <option value="F">Female</option>
         <option value="M">Male</option>
-      </select>
+      </select> -->
     </div>
   </div>
 </div>

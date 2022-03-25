@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { User } from 'src/app/interfaces/User';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,6 @@ export class LoginGuard implements CanActivate {
 
 
       if(user){
-
-
         return true;
       }else{
         this.router.navigateByUrl('auth');

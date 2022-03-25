@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Category } from 'src/app/interfaces/Category';
 import { Clothing } from 'src/app/interfaces/Clothing';
 import { User } from 'src/app/interfaces/User';
+import { CategoriesService } from 'src/app/services/categories.service';
 import { UserServicesService } from 'src/app/services/user-services.service';
 
 @Component({
@@ -14,14 +16,17 @@ export class MenuComponent implements OnInit {
   public user!:User;
   public menuDataStatus:boolean = false;
   public items!:Clothing[];
+  public cats:Category[] = [];
 
   constructor(
     private _userService:UserServicesService,
-    private router:Router) {
+    private router:Router,
+    private _catService:CategoriesService) {
       this.items = [];
     }
 
   ngOnInit(): void {
+    this.loadCategories();
     this.user = this._userService.initUser();
     this.verifiyLoggedUser();
   }
@@ -52,6 +57,18 @@ export class MenuComponent implements OnInit {
 
   redirect(cat:number){
     this.router.navigateByUrl(`/category/${cat}`);
+  }
+
+  loadCategories(){
+    this._catService.getCategories().subscribe(res=>{
+      if(res.success){
+        res.data.forEach((item:Category)=> {
+          this.cats.push(item);
+        });
+      }else{
+        alert(res.message)
+      }
+    });
   }
 
 

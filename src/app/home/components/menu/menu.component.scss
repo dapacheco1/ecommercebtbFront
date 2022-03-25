@@ -1,14 +1,15 @@
-#shoes,#shirts,#pants,#home{
+.cat{
     position:relative;
+    cursor: pointer;
 }
 
-#shoes:hover::before,#shirts:hover::before,#pants:hover::before,#home:hover::before{
+.cat:hover::before{
     width: 100%;
     transform: width;
     transition: all 250ms ease-out;
 }
 
-#shoes::before,#shirts::before,#pants::before,#home::before{
+.cat::before{
     position: absolute;
     left: 0;
     bottom: 0;
