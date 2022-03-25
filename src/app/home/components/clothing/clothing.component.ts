@@ -31,10 +31,10 @@ export class ClothingComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.id = 0;
-    
+     
     this.sub = this.route.params.subscribe(params => {
-      this.id = +params['id']; 
+      
+      this.id =+ params['id']; 
       this.getClothes();
       // In a real app: dispatch action to load the details here.
    });
@@ -42,8 +42,7 @@ export class ClothingComponent implements OnInit {
   }
 
   getClothes(){
-    this.clothes = [];
-    this.amounts  =[];
+
     this._clthService.getClothesByCategory(this.id).subscribe(res=>{
       
       if(res.success){
@@ -53,11 +52,6 @@ export class ClothingComponent implements OnInit {
           return element;
         });
       }
-
-      // res.data.forEach((element:Clothing) => {
-      //   this.clothes.push(element);
-      //   this.amounts.push(0);
-      // });
     });
   }
 
@@ -81,8 +75,6 @@ export class ClothingComponent implements OnInit {
 
 
   substract(index:number){
-    // if(this.amounts[index]>0){
-      // }
 
       if(this.clothesAux[index].amount > 0)
         this.clothesAux[index].amount--;

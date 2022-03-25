@@ -12,6 +12,7 @@ export class FilterByGenderComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
   filter(value: any) {
