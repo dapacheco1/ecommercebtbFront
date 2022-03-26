@@ -9,11 +9,9 @@
                     </div>
                     <div class="col-sm-12 col-md-8 col-lg-8">
                         <div class="form-group">
-                            <select class="form-select" name="categories">
+                            <select class="form-select" name="categories" (change)="filterSizesByCatId($event)">
                                 <option value="">---</option>
-                                <option value="1">Shoes</option>
-                                <option value="2">Shirts</option>
-                                <option value="3">Pants</option>
+                                <option *ngFor="let cat of cats" [value]="cat.slug">{{cat.detail}}</option>
                               </select>                
                         </div>
                     </div>
@@ -26,9 +24,7 @@
                         <div class="form-group">
                             <select class="form-select" name="size">
                                 <option value="">---</option>
-                                <option value="1">L</option>
-                                <option value="2">XL</option>
-                                <option value="3">XXL</option>
+                                <option *ngFor="let sz of filteredSz" [value]="sz.id">{{sz.size}}</option>
                               </select>                
                         </div>
                     </div>
@@ -73,8 +69,7 @@
                         <div class="form-group">
                             <select class="form-select" name="Gender">
                                 <option value="">---</option>
-                                <option value="1">F</option>
-                                <option value="2">M</option>
+                                <option *ngFor="let gen of genders" [value]="gen.id">{{gen.genre}}</option>
                               </select>                
                         </div>
                     </div>
@@ -87,9 +82,8 @@
                         <div class="form-group">
                             <select class="form-select" name="status">
                                 <option value="">---</option>
-                                <option value="1">L</option>
-                                <option value="2">XL</option>
-                                <option value="3">XXL</option>
+                                <option value="A">Active</option>
+                                <option value="I">Inactive</option>
                               </select>                
                         </div>
                     </div>
@@ -99,12 +93,12 @@
                         <label for="img">Image URL: </label>
                     </div>
                     <div class="col-sm-12 col-md-8 col-lg-8">
-                        <input type="text" class="form-control" name="img">
+                        <input type="text" class="form-control" name="img" [(ngModel)]="imgURL">
                     </div>
                 </div>
-                <div class="row mb-3">
+                <div class="row mb-3" *ngIf="imgURL!=''">
                     <div class="col-sm-12">
-                        <img  class="img-fluid" src="https://www.leadershipmartialartsct.com/wp-content/uploads/2017/04/default-image-620x600.jpg" alt="img_uploaded">
+                        <img  class="img-fluid" [src]="imgURL" alt="img_uploaded">
                     </div>
                 </div>
                 <button type="reset" class="btn btn-danger">Reset Form</button>
@@ -115,60 +109,60 @@
         <div class="col-sm-12 col-md-7 col-lg-7 px-3 py-4">
             <div class="bg-light px-4 py-4 form">
                 <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-6">
+                    <div class="col-sm-12 col-md-12 col-lg-6 mb-md-4">
                         <div class="card" style="width: auto;">
                             <div class="row">
-                                <div class="col-sm-12 col-md-4 col-lg-4">
-                                    <img src="..." class="card-img-top" alt="...">
+                                <div class="col-sm-12 col-md-12 col-lg-4">
+                                    <img src="" class="card-img-top" alt="...">
                                 </div>
-                                <div class="col-sm-12 col-md-8 col-lg-8">
+                                <div class="col-sm-12 col-md-12 col-lg-8">
                                     <div class="card-body">
                                         <h5 class="card-title">Product name</h5>
                                         <div class="row">
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 <span> <b>Category</b> </span>
                                             </div>
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 Pants
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 <span> <b>Price:</b> </span>
                                             </div>
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 <small>$ 12.25</small> 
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 <span> <b>Size:</b> </span>
                                             </div>
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 XL
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 <span> <b>Stock:</b> </span>
                                             </div>
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 14
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 <span> <b>Gender: </b> </span>
                                             </div>
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 M
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 <span> <b>Status:</b> </span>
                                             </div>
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 A
                                             </div>
                                         </div>
@@ -184,61 +178,66 @@
                            
                           </div>
                     </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6">
+                    <div class="col-sm-12 col-md-12 col-lg-6 mb-md-4">
                         <div class="card" style="width: auto;">
                             <div class="row">
-                                <div class="col-sm-12 col-md-4 col-lg-4">
-                                    <img src="..." class="card-img-top" alt="...">
+                                <div class="col-sm-12 col-md-12 col-lg-4">
+                                    <img src="" class="card-img-top" alt="...">
                                 </div>
-                                <div class="col-sm-12 col-md-8 col-lg-8">
+                                <div class="col-sm-12 col-md-12 col-lg-8">
                                     <div class="card-body">
                                         <h5 class="card-title">Product name</h5>
                                         <div class="row">
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 <span> <b>Category</b> </span>
                                             </div>
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 Pants
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 <span> <b>Price:</b> </span>
                                             </div>
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
-                                                Pants
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                                <small>$ 12.25</small> 
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 <span> <b>Size:</b> </span>
                                             </div>
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 XL
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 <span> <b>Stock:</b> </span>
                                             </div>
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 14
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 <span> <b>Gender: </b> </span>
                                             </div>
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 M
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 <span> <b>Status:</b> </span>
                                             </div>
-                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
                                                 A
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <button class="btn btn-primary">View Details</button>
                                             </div>
                                         </div>
                                       </div>
