@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { ErrorComponent } from './components/error/error.component';
 import { ModalMessageComponent } from './components/modal-message/modal-message.component';
 import { EditmodalComponent } from './components/editmodal/editmodal.component';
+import { InventoryComponent } from './pages/inventory/inventory.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { EditmodalComponent } from './components/editmodal/editmodal.component';
     CategoryComponent,
     ErrorComponent,
     ModalMessageComponent,
-    EditmodalComponent
+    EditmodalComponent,
+    InventoryComponent
   ],
   imports: [
     CommonModule,

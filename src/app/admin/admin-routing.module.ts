@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BaseAdminComponent } from './components/base-admin/base-admin.component';
 import { CategoryComponent } from './pages/category/category.component';
 import { AdminGuard } from '../auth/guard/admin.guard';
+import { InventoryComponent } from '../admin/pages/inventory/inventory.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,11 @@ const routes: Routes = [
         path:'categorycrud',
         component:CategoryComponent,
         canActivate:[AdminGuard],
+      },
+      {
+        path:'inventory',
+        component:InventoryComponent,
+        canActivate:[AdminGuard]
       }
     ],
 
