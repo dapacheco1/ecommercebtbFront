@@ -21,6 +21,7 @@ export class InventoryComponent implements OnInit {
   public genders!:Gender[];
   public filteredSz:Size[] = [];
   public clothe!:Clothing;
+  public inventory:Clothing[] = [];
 
   constructor(
     private _catServices:CategoriesService,
@@ -40,6 +41,7 @@ export class InventoryComponent implements OnInit {
     this.loadCategories();
     this.loadSizes();
     this.loadGenders();
+    this.renderInventory();
     
     
   }
@@ -87,6 +89,7 @@ export class InventoryComponent implements OnInit {
       this._cltServices.createClothe(this.clothe).subscribe(res=>{
         if(res.success){
           this.resetForm();
+          this.renderInventory();
         }else{
           alert(res.message);
         }
@@ -119,5 +122,12 @@ export class InventoryComponent implements OnInit {
     }else{
       return false;
     }
+  }
+
+
+  renderInventory(){
+    this._cltServices.getAllClothes().subscribe(res=>{
+      this.inventory = res.data;
+    });
   }
 }

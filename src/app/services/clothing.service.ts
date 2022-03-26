@@ -40,6 +40,12 @@ export class ClothingService {
     return this._htttp.get<ResponseServer>(route);
   }
 
+
+  getAllClothes(){
+    const route = `${this.conn}clothing`;
+    return this._htttp.get<ResponseServer>(route);
+  }
+
   createClothe(clt:Clothing){
     const route = `${this.conn}clothing`;
     return this._htttp.post<ResponseServer>(route,clt);

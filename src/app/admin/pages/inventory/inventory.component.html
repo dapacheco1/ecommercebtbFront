@@ -109,21 +109,21 @@
         <div class="col-sm-12 col-md-7 col-lg-7 px-3 py-4">
             <div class="bg-light px-4 py-4 form">
                 <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-6 mb-md-4">
+                    <div class="col-sm-12 col-md-12 col-lg-6 mb-md-4" *ngFor="let inv of inventory">
                         <div class="card" style="width: auto;">
                             <div class="row">
                                 <div class="col-sm-12 col-md-12 col-lg-4">
-                                    <img src="" class="card-img-top" alt="...">
+                                    <img [src]="inv.image" class="card-img-top" alt="...">
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-8">
                                     <div class="card-body">
-                                        <h5 class="card-title">Product name</h5>
+                                        <h5 class="card-title">{{inv.name}}</h5>
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6 col-lg-6">
                                                 <span> <b>Category</b> </span>
                                             </div>
                                             <div class="col-sm-6 col-md-6 col-lg-6">
-                                                Pants
+                                                {{inv.category?.detail}}
                                             </div>
                                         </div>
                                         <div class="row">
@@ -131,7 +131,7 @@
                                                 <span> <b>Price:</b> </span>
                                             </div>
                                             <div class="col-sm-6 col-md-6 col-lg-6">
-                                                <small>$ 12.25</small> 
+                                                <small>$ {{inv.price}}</small> 
                                             </div>
                                         </div>
                                         <div class="row">
@@ -139,7 +139,7 @@
                                                 <span> <b>Size:</b> </span>
                                             </div>
                                             <div class="col-sm-6 col-md-6 col-lg-6">
-                                                XL
+                                                {{inv.size?.size}}
                                             </div>
                                         </div>
                                         <div class="row">
@@ -147,7 +147,7 @@
                                                 <span> <b>Stock:</b> </span>
                                             </div>
                                             <div class="col-sm-6 col-md-6 col-lg-6">
-                                                14
+                                                {{inv.stock}}
                                             </div>
                                         </div>
                                         <div class="row">
@@ -155,7 +155,7 @@
                                                 <span> <b>Gender: </b> </span>
                                             </div>
                                             <div class="col-sm-6 col-md-6 col-lg-6">
-                                                M
+                                                {{inv.genre?.genre}}
                                             </div>
                                         </div>
                                         <div class="row">
@@ -163,7 +163,7 @@
                                                 <span> <b>Status:</b> </span>
                                             </div>
                                             <div class="col-sm-6 col-md-6 col-lg-6">
-                                                A
+                                                {{inv.status}}
                                             </div>
                                         </div>
                                         <div class="row">
@@ -178,75 +178,7 @@
                            
                           </div>
                     </div>
-                    <div class="col-sm-12 col-md-12 col-lg-6 mb-md-4">
-                        <div class="card" style="width: auto;">
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-4">
-                                    <img src="" class="card-img-top" alt="...">
-                                </div>
-                                <div class="col-sm-12 col-md-12 col-lg-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Product name</h5>
-                                        <div class="row">
-                                            <div class="col-sm-6 col-md-6 col-lg-6">
-                                                <span> <b>Category</b> </span>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-6">
-                                                Pants
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6 col-md-6 col-lg-6">
-                                                <span> <b>Price:</b> </span>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-6">
-                                                <small>$ 12.25</small> 
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6 col-md-6 col-lg-6">
-                                                <span> <b>Size:</b> </span>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-6">
-                                                XL
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6 col-md-6 col-lg-6">
-                                                <span> <b>Stock:</b> </span>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-6">
-                                                14
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6 col-md-6 col-lg-6">
-                                                <span> <b>Gender: </b> </span>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-6">
-                                                M
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6 col-md-6 col-lg-6">
-                                                <span> <b>Status:</b> </span>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-6">
-                                                A
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <button class="btn btn-primary">View Details</button>
-                                            </div>
-                                        </div>
-                                      </div>
-                                </div>
-                            </div>
-                            
-                           
-                          </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
