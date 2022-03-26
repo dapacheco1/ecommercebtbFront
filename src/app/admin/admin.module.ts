@@ -8,6 +8,7 @@ import { CategoryComponent } from './pages/category/category.component';
 import { FormsModule } from '@angular/forms';
 import { ErrorComponent } from './components/error/error.component';
 import { ModalMessageComponent } from './components/modal-message/modal-message.component';
+import { EditmodalComponent } from './components/editmodal/editmodal.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ModalMessageComponent } from './components/modal-message/modal-message.
     BaseAdminComponent,
     CategoryComponent,
     ErrorComponent,
-    ModalMessageComponent
+    ModalMessageComponent,
+    EditmodalComponent
   ],
   imports: [
     CommonModule,

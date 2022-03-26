@@ -13,7 +13,7 @@ export class CategoriesService {
 
   constructor(
     private _htttp:HttpClient
-  ) { 
+  ) {
     this.conn = environment.url;
   }
 
@@ -27,7 +27,7 @@ export class CategoriesService {
       updated_at:''
     };
   }
-  
+
   getCategories(){
     const route = `${this.conn}categories`;
     return this._htttp.get<ResponseServer>(route);
@@ -41,5 +41,11 @@ export class CategoriesService {
   deleteCategoryById(id:number){
     const route = `${this.conn}categories/${id}`;
     return this._htttp.delete<ResponseServer>(route);
+  }
+
+  updateCategory(cat:Category){
+    const route = `${this.conn}categories`;
+    return this._htttp.put<ResponseServer>(route,cat);
+
   }
 }

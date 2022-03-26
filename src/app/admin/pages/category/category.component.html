@@ -111,17 +111,20 @@
             <td>{{ cat.created_at }}</td>
             <td>{{ cat.status }}</td>
             <td>
-              <button class="btn btn-primary">
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" (click)="loadCategoryOnModal(cat)">
                 <i class="fa-solid fa-pencil"></i>
               </button>
+              <app-editmodal [cat]="auxCat"></app-editmodal>
               <button class="btn btn-danger" (click)="assignId(cat.id)" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <i class="fa-solid fa-trash"></i>
-                <app-modal-message [msg]="msgModal" [id]="InId" (deleted)="isDeleted($event)"></app-modal-message>
               </button>
+              <app-modal-message [msg]="msgModal" [id]="InId" (deleted)="isDeleted($event)"></app-modal-message>
+
             </td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
+
 </div>

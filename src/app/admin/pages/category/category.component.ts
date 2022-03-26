@@ -14,6 +14,7 @@ export class CategoryComponent implements OnInit {
   public cats:Category[] = [];
   public categoryForm!:Category;
   public formStatus:boolean= true;
+  public auxCat:Category = this._catService.initCategory();
 
   public msg:string = '';
   public msgModal:string = `Are you sure that you want to delete this category?
@@ -97,6 +98,11 @@ export class CategoryComponent implements OnInit {
 
   assignId(id:number){
     this.InId = id;
+  }
+
+
+  loadCategoryOnModal(category:Category){
+    this.auxCat = category;
   }
 
 }

@@ -1,0 +1,88 @@
+<div
+class="modal fade"
+id="editModal"
+tabindex="-1"
+aria-labelledby="modalEditlbl"
+aria-hidden="true"
+>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="modalEditlbl">Edit Category</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <div class="container-fluid">
+        <div class="mb-3">
+          <div class="row mb-3">
+            <div class="col-sm-12 col-md-4 col-lg-4">
+              <label for="catname" class="form-label"
+                >Category name:
+              </label>
+            </div>
+            <div class="col-sm-12 col-md-8 col-lg-8">
+              <input
+                type="text"
+                class="form-control"
+                name="catname"
+                [(ngModel)]="cat.detail"
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-4">
+              <label for="slugname" class="form-label"
+                >Slug name:
+              </label>
+            </div>
+            <div class="col-sm-12 col-md-8 col-lg-8">
+              <input
+                type="text"
+                class="form-control"
+                name="slugname"
+                [(ngModel)]="cat.slug"
+              />
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-sm-12 col-md-4 col-lg-4">
+              <label for="selectStatus">Status: </label>
+            </div>
+            <div class="col-sm-12 col-md-8 col-lg-8">
+              <select class="form-select" aria-label="Default select example" name="selectStatus" (change)="changeStatus($event)">
+                <option value="">---</option>
+                <option value="A">Active</option>
+                <option value="I">Inactive</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <app-error *ngIf="!formStatus" [error]="msg"></app-error>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-secondary"
+        data-bs-dismiss="modal"
+      >
+        Close
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="updateCategory()"
+      >
+        Save category
+      </button>
+    </div>
+  </div>
+</div>
+</div>
