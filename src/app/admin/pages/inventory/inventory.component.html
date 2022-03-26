@@ -22,7 +22,7 @@
                     </div>
                     <div class="col-sm-12 col-md-8 col-lg-8">
                         <div class="form-group">
-                            <select class="form-select" name="size">
+                            <select class="form-select" name="size" (change)="getSizeId($event)">
                                 <option value="">---</option>
                                 <option *ngFor="let sz of filteredSz" [value]="sz.id">{{sz.size}}</option>
                               </select>                
@@ -34,7 +34,7 @@
                         <label for="price">Price: </label>
                     </div>
                     <div class="col-sm-12 col-md-8 col-lg-8">
-                        <input type="number" class="form-control" name="price" min="0" step="0.01">
+                        <input type="number" class="form-control" name="price" min="0" step="0.01" [(ngModel)]="clothe.price">
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -42,7 +42,7 @@
                         <label for="stock">Stock: </label>
                     </div>
                     <div class="col-sm-12 col-md-8 col-lg-8">
-                        <input type="number" class="form-control" name="stock" min="0" step="1">
+                        <input type="number" class="form-control" name="stock" min="0" step="1" [(ngModel)]="clothe.stock">
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -50,7 +50,7 @@
                         <label for="prodname">Product name: </label>
                     </div>
                     <div class="col-sm-12 col-md-8 col-lg-8">
-                        <input type="text" class="form-control" name="prodname">
+                        <input type="text" class="form-control" name="prodname" [(ngModel)]="clothe.name">
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -58,7 +58,7 @@
                         <label for="detail" class="form-label">Details: </label>
                     </div>
                     <div class="col-sm-12 col-md-8 col-lg-8">
-                        <textarea class="form-control" name="detail" rows="3"></textarea>
+                        <textarea class="form-control" name="detail" rows="3" [(ngModel)]="clothe.detail"></textarea>
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -67,42 +67,42 @@
                     </div>
                     <div class="col-sm-12 col-md-8 col-lg-8">
                         <div class="form-group">
-                            <select class="form-select" name="Gender">
+                            <select class="form-select" name="Gender" (change)="getGenderId($event)">
                                 <option value="">---</option>
                                 <option *ngFor="let gen of genders" [value]="gen.id">{{gen.genre}}</option>
                               </select>                
                         </div>
                     </div>
                 </div>
-                <div class="row mb-3">
+                <!-- <div class="row mb-3">
                     <div class="col-sm-12 col-md-4 col-lg-4">
                         <label for="status">Status: </label>
                     </div>
                     <div class="col-sm-12 col-md-8 col-lg-8">
                         <div class="form-group">
-                            <select class="form-select" name="status">
+                            <select class="form-select" name="status" >
                                 <option value="">---</option>
                                 <option value="A">Active</option>
                                 <option value="I">Inactive</option>
                               </select>                
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="row mb-3">
                     <div class="col-sm-12 col-md-4 col-lg-4">
                         <label for="img">Image URL: </label>
                     </div>
                     <div class="col-sm-12 col-md-8 col-lg-8">
-                        <input type="text" class="form-control" name="img" [(ngModel)]="imgURL">
+                        <input type="text" class="form-control" name="img" [(ngModel)]="clothe.image">
                     </div>
                 </div>
-                <div class="row mb-3" *ngIf="imgURL!=''">
+                <div class="row mb-3" *ngIf="clothe.image!=''">
                     <div class="col-sm-12">
-                        <img  class="img-fluid" [src]="imgURL" alt="img_uploaded">
+                        <img  class="img-fluid" [src]="clothe.image" alt="img_uploaded">
                     </div>
                 </div>
                 <button type="reset" class="btn btn-danger">Reset Form</button>
-                <button class="btn btn-success">Save Product</button>
+                <button class="btn btn-success" (click)="saveClothe()">Save Product</button>
                 
               </div>
         </div>

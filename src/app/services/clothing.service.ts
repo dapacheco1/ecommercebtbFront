@@ -29,7 +29,7 @@ export class ClothingService {
       image:'',
       name:'',
       detail:'',
-      status:'',
+      status:'A',
       created_at:'',
       updated_at:''
     }
@@ -38,5 +38,10 @@ export class ClothingService {
   getClothesByCategory(id:string){
     const route = `${this.conn}clothing/${id}`;
     return this._htttp.get<ResponseServer>(route);
+  }
+
+  createClothe(clt:Clothing){
+    const route = `${this.conn}clothing`;
+    return this._htttp.post<ResponseServer>(route,clt);
   }
 }
