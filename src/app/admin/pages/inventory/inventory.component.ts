@@ -22,6 +22,7 @@ export class InventoryComponent implements OnInit {
   public filteredSz:Size[] = [];
   public clothe!:Clothing;
   public inventory:Clothing[] = [];
+  public pagination:Clothing[] = [];
 
   constructor(
     private _catServices:CategoriesService,
@@ -127,7 +128,12 @@ export class InventoryComponent implements OnInit {
 
   renderInventory(){
     this._cltServices.getAllClothes().subscribe(res=>{
-      this.inventory = res.data;
+      this.pagination = res.data;
+      this.paginate(0,2)
     });
+  }
+
+  paginate(start:number,finish:number){
+    this.inventory = this.pagination.splice(start,finish);
   }
 }

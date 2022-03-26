@@ -106,7 +106,7 @@
                 
               </div>
         </div>
-        <div class="col-sm-12 col-md-7 col-lg-7 px-3 py-4">
+        <div class="col-sm-12 col-md-7 col-lg-7 px-3 py-4 overflow-auto">
             <div class="bg-light px-4 py-4 form">
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-6 mb-md-4" *ngFor="let inv of inventory">
@@ -166,9 +166,21 @@
                                                 {{inv.status}}
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <button class="btn btn-primary">View Details</button>
+                                        <div class="row mt-4">
+                                            <div class="col-4">
+                                                <button class="btn btn-primary">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </button>
+                                            </div>
+                                            <div class="col-4">
+                                                <button class="btn btn-primary">
+                                                    <i class="fa-solid fa-pencil"></i>
+                                                </button>
+                                            </div>
+                                            <div class="col-4">
+                                                <button class="btn btn-danger">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </button>
                                             </div>
                                         </div>
                                       </div>
