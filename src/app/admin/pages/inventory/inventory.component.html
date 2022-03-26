@@ -23,7 +23,7 @@
                     <div class="col-sm-12 col-md-8 col-lg-8">
                         <div class="form-group">
                             <select class="form-select" name="size" (change)="getSizeId($event)">
-                                <option value="">---</option>
+                                <option value="0">---</option>
                                 <option *ngFor="let sz of filteredSz" [value]="sz.id">{{sz.size}}</option>
                               </select>                
                         </div>
@@ -68,7 +68,7 @@
                     <div class="col-sm-12 col-md-8 col-lg-8">
                         <div class="form-group">
                             <select class="form-select" name="Gender" (change)="getGenderId($event)">
-                                <option value="">---</option>
+                                <option value="0">---</option>
                                 <option *ngFor="let gen of genders" [value]="gen.id">{{gen.genre}}</option>
                               </select>                
                         </div>
