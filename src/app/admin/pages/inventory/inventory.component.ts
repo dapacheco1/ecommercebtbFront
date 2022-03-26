@@ -99,8 +99,8 @@ export class InventoryComponent implements OnInit {
     this.clothe = this._cltServices.initClothing();
     this.cats = [];
     this.sz = [];
+    this.filteredSz = [];
     this.genders = [];
-    this.clothe = this._cltServices.initClothing();
     this.loadCategories();
     this.loadSizes();
     this.loadGenders();
