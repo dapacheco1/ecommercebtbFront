@@ -23,6 +23,7 @@ export class InventoryComponent implements OnInit {
   public clothe!:Clothing;
   public inventory:Clothing[] = [];
   public pagination:Clothing[] = [];
+  private nextCount:number =0;
 
   constructor(
     private _catServices:CategoriesService,
@@ -31,7 +32,7 @@ export class InventoryComponent implements OnInit {
     private _cltServices:ClothingService,
     private _form:FormValidationsService
   ) {
-    
+
    }
 
   ngOnInit(): void {
@@ -43,15 +44,16 @@ export class InventoryComponent implements OnInit {
     this.loadSizes();
     this.loadGenders();
     this.renderInventory();
-    
-    
+
+
+
   }
 
 
   loadCategories(){
     this._catServices.getCategories().subscribe(res=>{
       if(res.success){
-        this.cats = res.data;       
+        this.cats = res.data;
       }
     });
   }
@@ -82,7 +84,7 @@ export class InventoryComponent implements OnInit {
 
   getGenderId(event:any){
     this.clothe.genre_id = event.target.value;
-    
+
   }
 
   saveClothe(){
@@ -96,7 +98,7 @@ export class InventoryComponent implements OnInit {
         }
       });
     }
-    
+
   }
 
   resetForm(){
@@ -117,7 +119,7 @@ export class InventoryComponent implements OnInit {
     const stock = this._form.onlyNumbers((String)(this.clothe.stock),"stock");
     const name = this._form.onlyLetters(this.clothe.name,"product name");
     const details = this._form.onlyLettersSpecialLettersAndNumbers(this.clothe.detail,"details");
-    
+
     if(price.success && stock.success && name.success && details.success && this.clothe.size_id != 0 && this.clothe.genre_id != 0 && this.clothe.category_id!=0){
       return true;
     }else{
@@ -129,11 +131,27 @@ export class InventoryComponent implements OnInit {
   renderInventory(){
     this._cltServices.getAllClothes().subscribe(res=>{
       this.pagination = res.data;
-      this.paginate(0,2)
+      this.inventory = this.pagination.slice(0,2);
     });
+
   }
 
-  paginate(start:number,finish:number){
-    this.inventory = this.pagination.splice(start,finish);
+
+
+
+  prev(){
+    if(this.nextCount>1){
+      this.nextCount-=2;
+      this.inventory = this.pagination.slice(this.nextCount,this.nextCount+2);
+    }
+  }
+
+  next(){
+    if(this.nextCount<this.pagination.length-1){
+      this.nextCount+=2;
+      this.inventory = this.pagination.slice(this.nextCount,this.nextCount+2);
+
+    }
+
   }
 }
