@@ -237,9 +237,12 @@
                         ></app-modal-details>
                       </div>
                       <div class="col-4">
-                        <button class="btn btn-primary">
+                        <button class="btn btn-primary" data-bs-toggle="modal" 
+                        [attr.data-bs-target]="'#edit'+i">
                           <i class="fa-solid fa-pencil"></i>
                         </button>
+                        <app-modal-edit-clothing
+                        [modalId]="'edit' + i" [clothe]="inv"></app-modal-edit-clothing>
                       </div>
                       <div class="col-4">
                         <button

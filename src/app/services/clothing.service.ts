@@ -55,4 +55,9 @@ export class ClothingService {
     const route = `${this.conn}clothing/${id}`;
     return this._htttp.delete<ResponseServer>(route);
   }
+
+  updateClothe(clt:Clothing){
+    const route = `${this.conn}clothing/`;
+    return this._htttp.put<ResponseServer>(route,clt);
+  }
 }
