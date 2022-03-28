@@ -118,7 +118,7 @@
               <button class="btn btn-danger" (click)="assignId(cat.id)" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <i class="fa-solid fa-trash"></i>
               </button>
-              <app-modal-message [msg]="msgModal" [id]="InId" (deleted)="isDeleted($event)"></app-modal-message>
+              <app-modal-message [msg]="msgModal" [id]="InId" [action]="1" (deleted)="isDeleted($event)"></app-modal-message>
 
             </td>
           </tr>

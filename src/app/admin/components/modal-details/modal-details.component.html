@@ -1,0 +1,46 @@
+
+<!-- Modal -->
+<div class="modal fade text-dark" id="{{modalId}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">About this product</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-6">
+                    <b>Details: </b>
+                </div>
+                <div class="col-6">
+                    {{details}} 
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <b>Created at: </b>
+                </div>
+                <div class="col-6">
+                    {{created_at}} 
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-6">
+                    <b>Updated at: </b>
+                </div>
+                <div class="col-6">
+                    {{updated_at}} 
+                </div>
+            </div>
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

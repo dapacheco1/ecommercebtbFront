@@ -24,6 +24,8 @@ export class InventoryComponent implements OnInit {
   public inventory:Clothing[] = [];
   public pagination:Clothing[] = [];
   private nextCount:number =0;
+  public asId:number = 0;
+  public msg:string = 'Are you sure that you want to delete this clothe. This action cannot be undone.';
 
   constructor(
     private _catServices:CategoriesService,
@@ -88,9 +90,14 @@ export class InventoryComponent implements OnInit {
   }
 
   saveClothe(){
+    
+    
     if(this.validateForm()){
+      
       this._cltServices.createClothe(this.clothe).subscribe(res=>{
         if(res.success){
+          alert(res.message);
+          
           this.resetForm();
           this.renderInventory();
         }else{
@@ -153,5 +160,23 @@ export class InventoryComponent implements OnInit {
 
     }
 
+  }
+
+
+  assignId(id:number){
+    this.asId = id;
+  }
+
+  isDeleted(event:any){
+    if(event == 'deleted'){
+      this.nextCount = 0;
+      this.inventory = [];
+      this.pagination = [];
+      this.renderInventory();
+      
+    }else{
+      console.log('canceled');
+      
+    }
   }
 }

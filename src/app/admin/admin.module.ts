@@ -10,6 +10,8 @@ import { ErrorComponent } from './components/error/error.component';
 import { ModalMessageComponent } from './components/modal-message/modal-message.component';
 import { EditmodalComponent } from './components/editmodal/editmodal.component';
 import { InventoryComponent } from './pages/inventory/inventory.component';
+import { ModalDetailsComponent } from './components/modal-details/modal-details.component';
+import { ModalEditClothingComponent } from './components/modal-edit-clothing/modal-edit-clothing.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { InventoryComponent } from './pages/inventory/inventory.component';
     ErrorComponent,
     ModalMessageComponent,
     EditmodalComponent,
-    InventoryComponent
+    InventoryComponent,
+    ModalDetailsComponent,
+    ModalEditClothingComponent
   ],
   imports: [
     CommonModule,

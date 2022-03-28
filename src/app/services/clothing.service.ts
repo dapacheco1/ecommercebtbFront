@@ -50,4 +50,9 @@ export class ClothingService {
     const route = `${this.conn}clothing`;
     return this._htttp.post<ResponseServer>(route,clt);
   }
+
+  deleteClotheById(id:number){
+    const route = `${this.conn}clothing/${id}`;
+    return this._htttp.delete<ResponseServer>(route);
+  }
 }
