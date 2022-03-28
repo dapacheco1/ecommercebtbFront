@@ -88,15 +88,15 @@ export class ModalEditClothingComponent implements OnInit {
     console.log(this.clothe);
     if(this.validateForm()){
       
-      // this._cltServices.updateClothe(this.clothe).subscribe(res=>{
-      //   if(res.success){
-      //     alert(res.message);
+      this._cltServices.updateClothe(this.clothe).subscribe(res=>{
+        if(res.success){
+          alert(res.message);
           
-      //     this.resetForm();
-      //   }else{
-      //     alert(res.message);
-      //   }
-      // });
+          this.resetForm();
+        }else{
+          alert(res.message);
+        }
+      });
       
       
     }else{
@@ -125,6 +125,8 @@ export class ModalEditClothingComponent implements OnInit {
     const name = this._form.onlyLetters(this.clothe.name,"product name");
     const details = this._form.onlyLettersSpecialLettersAndNumbers(this.clothe.detail,"details");
 
+    console.log(price,stock,name,details);
+    
     if(price.success && stock.success && name.success && details.success && this.clothe.size_id != 0 && this.clothe.genre_id != 0 && this.clothe.category_id!=0){
       return true;
     }else{
@@ -132,4 +134,8 @@ export class ModalEditClothingComponent implements OnInit {
     }
   }
 
+
+  getStatus(event:any){
+    this.clothe.status = event.target.value;
+  } 
 }

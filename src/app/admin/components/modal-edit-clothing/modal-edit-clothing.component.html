@@ -130,7 +130,7 @@
                               </div>
                               <div class="col-sm-12 col-md-8 col-lg-8">
                                   <div class="form-group">
-                                      <select class="form-select" name="status" >
+                                      <select class="form-select" name="status" (change)="getStatus($event)">
                                           <option value="">---</option>
                                           <option value="A">Active</option>
                                           <option value="I">Inactive</option>
