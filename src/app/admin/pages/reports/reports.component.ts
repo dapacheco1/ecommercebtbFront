@@ -23,7 +23,7 @@ export class ReportsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  
+
   }
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
@@ -66,7 +66,8 @@ export class ReportsComponent implements OnInit {
     console.log(event, active);
   }
 
- 
+
+
 
   getReports(){
     this._reportsService.getMostSoldByValue(this.value).subscribe(res=>{
@@ -76,7 +77,7 @@ export class ReportsComponent implements OnInit {
       }else{
         alert(res.message);
       }
-      
+
     });
   }
 
@@ -87,15 +88,15 @@ export class ReportsComponent implements OnInit {
       this.aux.push(item.amount);
       labels.push(String(item.clothing?.name));
     });
-    
+
     this.barChartData = {
       labels: labels,
       datasets: [
-        { data: this.aux , label: 'Aux' },
+        { data: this.aux , label: 'Clothe' },
 
       ]
     };
-    
+
   }
 
 }

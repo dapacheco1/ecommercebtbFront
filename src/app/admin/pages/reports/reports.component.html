@@ -1,5 +1,5 @@
 <div class="container-fluid px-4 py-4">
- 
+
     <div class="row header px-2 py-4 bg-light">
         <div class="col-12 mb-3">
             <h3>Most sold products</h3>
@@ -8,14 +8,14 @@
             <div class="input-group">
                 <span class="input-group-text" id="basic-addon1">Amount of most sold</span>
                 <input type="number" min="0" step="1" class="form-control" name="amount" [(ngModel)]="value" id="">
-            </div>  
+            </div>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6">
             <button class="btn btn-primary input-group-text" (click)="getReports()">Get reports</button>
-        </div> 
+        </div>
     </div>
     <div class="row mt-5 bg-light" id="tableresp">
-        <div class="col-12">
+        <div class="col-sm-12 col-md-6 col-lg-6">
             <div class="table-responsive">
                 <table class="table">
                     <thead class="thead-dark">
@@ -35,21 +35,22 @@
                           <td>$ {{item.clothingprice}} USD</td>
                           <td>$ {{item.totalprice}} USD</td>
                         </tr>
-                        
+
                       </tbody>
                 </table>
               </div>
         </div>
-    </div>
-    <div class="row">
-        <div style="display: block">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <div style="display: block">
             <canvas baseChart
         [data]="barChartData"
         [options]="barChartOptions"
         [plugins]="barChartPlugins"
-        [type]="barChartType"></canvas>
-        
+        [type]="barChartType"
+        ></canvas>
+
           </div>
+        </div>
     </div>
 </div>
 
