@@ -4,6 +4,7 @@ import { BaseAdminComponent } from './components/base-admin/base-admin.component
 import { CategoryComponent } from './pages/category/category.component';
 import { AdminGuard } from '../auth/guard/admin.guard';
 import { InventoryComponent } from '../admin/pages/inventory/inventory.component';
+import { ReportsComponent } from './pages/reports/reports.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,11 @@ const routes: Routes = [
       {
         path:'inventory',
         component:InventoryComponent,
+        canActivate:[AdminGuard]
+      },
+      {
+        path:'report',
+        component:ReportsComponent,
         canActivate:[AdminGuard]
       }
     ],

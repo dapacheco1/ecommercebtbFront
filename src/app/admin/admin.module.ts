@@ -12,6 +12,7 @@ import { EditmodalComponent } from './components/editmodal/editmodal.component';
 import { InventoryComponent } from './pages/inventory/inventory.component';
 import { ModalDetailsComponent } from './components/modal-details/modal-details.component';
 import { ModalEditClothingComponent } from './components/modal-edit-clothing/modal-edit-clothing.component';
+import { ReportsComponent } from './pages/reports/reports.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ModalEditClothingComponent } from './components/modal-edit-clothing/mod
     EditmodalComponent,
     InventoryComponent,
     ModalDetailsComponent,
-    ModalEditClothingComponent
+    ModalEditClothingComponent,
+    ReportsComponent
   ],
   imports: [
     CommonModule,
