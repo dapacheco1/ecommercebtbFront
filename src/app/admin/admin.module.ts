@@ -13,7 +13,7 @@ import { InventoryComponent } from './pages/inventory/inventory.component';
 import { ModalDetailsComponent } from './components/modal-details/modal-details.component';
 import { ModalEditClothingComponent } from './components/modal-edit-clothing/modal-edit-clothing.component';
 import { ReportsComponent } from './pages/reports/reports.component';
-
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,8 @@ import { ReportsComponent } from './pages/reports/reports.component';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    FormsModule
+    FormsModule,
+    NgChartsModule
   ]
 })
 export class AdminModule { }
