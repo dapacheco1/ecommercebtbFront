@@ -55,17 +55,35 @@ export class CategoryComponent implements OnInit {
     const name = this._valService.onlyLetters(this.categoryForm.detail,"catname");
     const slug = this._valService.onlyLetters(this.categoryForm.slug,"slugname");
 
-    if(name.success && slug.success){
+    if(name.success && slug.success && this.categoryForm.detail.length>=3 && this.categoryForm.slug.length>=3){
       this.formStatus = true;
       return true;
     }else{
       this.formStatus = false;
       if(!name.success){
-        this.msg += name.message;
+        if(this.categoryForm.detail==''){
+          this.msg += ` *Category name is required`;
+        }else{
+          this.msg += ` *${name.message}`;
+        }
+        
+      }
+
+      if(this.categoryForm.detail.length<3 && this.categoryForm.detail!=''){
+        this.msg += ` *Invalid category name`;
+      }
+
+      if(this.categoryForm.slug.length<3 && this.categoryForm.slug!=''){
+        this.msg += ` *Invalid slug name`;
       }
 
       if(!slug.success){
-        this.msg += '->'+slug.message
+        if(this.categoryForm.slug==''){
+          this.msg += ` *Slug name is required`;
+        }else{
+          this.msg += ` *${slug.message}`;
+        }
+        
       }
       return false;
     }
