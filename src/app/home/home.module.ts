@@ -10,6 +10,7 @@ import { FilterPipe } from '../pipes/filter.pipe';
 import { FilterByGenderComponent } from './components/filter-by-gender/filter-by-gender.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { ClothingComponent } from './components/clothing/clothing.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 
@@ -21,7 +22,8 @@ import { ClothingComponent } from './components/clothing/clothing.component';
     FilterPipe,
     FilterByGenderComponent,
     CartComponent,
-    ClothingComponent
+    ClothingComponent,
+    NotFoundComponent
   ],
   imports: [
     CommonModule,
