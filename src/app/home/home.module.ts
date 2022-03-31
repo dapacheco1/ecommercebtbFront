@@ -12,6 +12,7 @@ import { CartComponent } from './pages/cart/cart.component';
 import { ClothingComponent } from './components/clothing/clothing.component';
 
 
+
 @NgModule({
   declarations: [
     IndexComponent,

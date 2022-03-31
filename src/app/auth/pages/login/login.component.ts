@@ -40,9 +40,6 @@ export class LoginComponent implements OnInit {
         }
         
       });
-    }else{
-      console.log('Error');
-      
     }
     
   }
@@ -56,11 +53,21 @@ export class LoginComponent implements OnInit {
       return true;
     }else{
       if(!us.success){
-        this.msg += `->${us.message}`;
+        if(this.user.username==''){
+          this.msg += ` *Username is required`;
+        }else{
+          this.msg += ` *${us.message}`;
+        }
+        
       }
 
       if(!pass.success){
-        this.msg += `${pass.message}`;
+        if(this.user.password==''){
+          this.msg += ` *Password is required`;
+        }else{
+          this.msg += ` *${pass.message}`;
+        }
+        
       }
 
       this.status = false;

@@ -25,7 +25,7 @@ export class FormValidationsService {
     if(this.regexTxt.test(this.trimData(str))){
       return this.buildResponse(true,`This input(${inputName}) fulfill with condition only letters and special letters`);
     }else{
-      return this.buildResponse(false,`This input(${inputName}) only admit letters and special letters`);
+      return this.buildResponse(false,`${inputName} only admit letters and special letters`);
     }
   }
 
@@ -33,7 +33,7 @@ export class FormValidationsService {
     if(this.regexDir.test(str)){
       return this.buildResponse(true,`This input(${inputName}) fulfill with condition only letters, special letters and numbers`);
     }else{
-      return this.buildResponse(false,`This input(${inputName}) only admit letters, special letters and numbers`);
+      return this.buildResponse(false,`${inputName} only admit letters, special letters and numbers`);
     }
 
   }
@@ -42,7 +42,7 @@ export class FormValidationsService {
     if(this.regexNum.test(str)){
       return this.buildResponse(true,`This input(${inputName}) fulfill with the condition only numbers`);
     }else{
-      return this.buildResponse(false,`This input(${inputName}) only admit numbers`);
+      return this.buildResponse(false,`${inputName} only admit numbers`);
     }
 
   }
@@ -52,7 +52,7 @@ export class FormValidationsService {
     if(this.regexUser.test(this.trimData(str))){
       return this.buildResponse(true,`This input(${inputName}) fulfill only letters and numbers`);
     }else{
-      return this.buildResponse(false,`This input(${inputName}) admit only letters and numbers`);
+      return this.buildResponse(false,`${inputName} admit only letters and numbers`);
     }
 
   }

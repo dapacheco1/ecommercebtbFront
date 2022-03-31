@@ -26,8 +26,9 @@
           </div>
           <div class="mb-3">
             <label for="gender" class="form-label">Gender: </label>
-            <select class="form-select" aria-label="gender select" [(ngModel)]="gen.id">
-              <option *ngFor="let gender of genders" [ngValue]="gender.id">{{gender.genre}}</option>
+            <select class="form-select" aria-label="gender select" (change)="getGenderValue($event)">
+              <option value="0">---</option>
+              <option *ngFor="let gender of genders" value="{{gender.id}}">{{gender.genre}}</option>
             </select>
           </div>
         </fieldset>
@@ -68,7 +69,6 @@
         </div>
 
         <button type="button" class="btn btn-register me-3" (click)="registerUser()" >Create User</button>
-        <button type="reset" class="btn btn-danger">Clear Form</button>
 
       </div>
   </div>

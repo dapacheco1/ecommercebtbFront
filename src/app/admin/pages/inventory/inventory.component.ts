@@ -140,11 +140,7 @@ export class InventoryComponent implements OnInit {
       this.pagination = res.data;
       this.inventory = this.pagination.slice(0,2);
     });
-
   }
-
-
-
 
   prev(){
     if(this.nextCount>1){
@@ -157,9 +153,7 @@ export class InventoryComponent implements OnInit {
     if(this.nextCount<this.pagination.length-1){
       this.nextCount+=2;
       this.inventory = this.pagination.slice(this.nextCount,this.nextCount+2);
-
     }
-
   }
 
 
@@ -172,11 +166,9 @@ export class InventoryComponent implements OnInit {
       this.nextCount = 0;
       this.inventory = [];
       this.pagination = [];
-      this.renderInventory();
-      
+      this.renderInventory();   
     }else{
       console.log('canceled');
-      
     }
   }
 }
