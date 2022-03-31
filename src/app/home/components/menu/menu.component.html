@@ -29,12 +29,13 @@
                         </a>
                     </li> -->
                 </ul>
-                <div class="d-flex me-5">
-                    <button class="btn btn-light" [routerLink]="['cart']">
-                      <span></span>
-                        <i class="fa-solid fa-cart-shopping"></i>
+                <button class="btn btn-light" [routerLink]="['cart']">
+                    <span></span>
+                      <i class="fa-solid fa-cart-shopping"></i>
 
-                    </button>
+                  </button>
+                <div class="d-flex me-5">
+                    
 
                     <div *ngIf="!menuDataStatus else logged">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
