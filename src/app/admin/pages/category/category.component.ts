@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { of } from 'rxjs';
+
 import { Category } from 'src/app/interfaces/Category';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { FormValidationsService } from 'src/app/services/form-validations.service';
@@ -26,6 +26,7 @@ export class CategoryComponent implements OnInit {
     private _valService:FormValidationsService
   ) {
     this.categoryForm = this._catService.initCategory();
+    this.categoryForm.status = 'I';
   }
 
   ngOnInit(): void {
@@ -37,6 +38,8 @@ export class CategoryComponent implements OnInit {
     this._catService.getCategories().subscribe(res=>{
       if(res.success){
         res.data.forEach((item:Category) => {
+          item.created_at = item.created_at.split('T')[0];
+          item.updated_at = item.updated_at.split('T')[0];
           this.cats.push(item);
         });
 

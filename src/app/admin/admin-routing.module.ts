@@ -13,11 +13,11 @@ const routes: Routes = [
     children:[
       {
         path:'',
-        redirectTo:'categorycrud',
+        redirectTo:'category',
         pathMatch:'full'
       },
       {
-        path:'categorycrud',
+        path:'category',
         component:CategoryComponent,
         canActivate:[AdminGuard],
       },
