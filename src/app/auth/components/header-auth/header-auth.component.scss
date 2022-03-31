@@ -1,0 +1,36 @@
+.navbar{
+  background-color: #A26956;
+}
+
+.nav-link{
+  position:relative;
+    cursor: pointer;
+}
+
+.nav-link:hover{
+  color:#005B4A!important;
+
+}
+
+.nav-link::before{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0px;
+    height: 2px;
+    content: '';
+    transition: all 250ms ease-out;
+    background-color:#005B4A ;
+}
+
+.nav-link:hover::before{
+  width: 100%;
+  transform: width;
+  transition: all 250ms ease-out;
+  background-color:#005B4A ;
+}
+
+
+.navbar-brand,.nav-link{
+  color: white;
+}

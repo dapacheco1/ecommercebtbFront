@@ -5,22 +5,30 @@
   </symbol>
 </svg>
 
-<form class="m-auto col-sm-8 col-md-6 col-lg-6">
-  <h1>Login</h1>
-  <div class="mb-3">
-    <label for="username" class="form-label">Username: </label>
-    <input type="text" class="form-control" name="username" [(ngModel)]="user.username">
-  </div>
-  <div class="mb-3">
-    <label for="password" class="form-label">Password</label>
-    <input type="password" class="form-control" name="password" [(ngModel)]="user.password">
-  </div>
-   <!-- error -->
-   <div class="alert alert-danger d-flex align-items-center" role="alert" *ngIf="!status">
-    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-    <div>
-      {{msg}}
+<div class="container-fluid px-4">
+  <div class="row mt-4 pb-4">
+    <div class=" col-sm-8 col-md-4 col-lg-4 login px-5 py-3 m-auto">
+      <img class="img-fluid" src="../../../../assets/img/mylogo.png" alt="btblogo">
+        <h3 class="text-center mb-3">Login to your account</h3>
+        <div class="mb-3">
+          <label for="username" class="form-label">Username: </label>
+          <input type="text" class="form-control" name="username" [(ngModel)]="user.username">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" name="password" [(ngModel)]="user.password">
+        </div>
+         <!-- error -->
+         <div class="alert alert-danger d-flex align-items-center" role="alert" *ngIf="!status">
+          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+          <div>
+            {{msg}}
+          </div>
+        </div>
+        <button type="submit" class="btn" (click)="validateUser()">Login</button>
+
     </div>
   </div>
-  <button type="submit" class="btn btn-primary" (click)="validateUser()">Login</button>
-</form>
+</div>
+
+

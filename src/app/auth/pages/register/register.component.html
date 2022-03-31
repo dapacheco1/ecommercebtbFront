@@ -5,68 +5,73 @@
   </symbol>
 </svg>
 
+<div class="container-fluid px-4 py-3">
+  <div class="row register px-3 py-4 my-3 mx-3">
+    <h1 class="text-center mb-3">Register form</h1>
+      <div class="col-sm-12 col-md-6 col-lg-6 px-5">
 
-<div class="m-auto col-sm-8 col-md-6 col-lg-6">
-  <h1>Register form</h1>
-  <fieldset>
-    <legend>Personal data</legend>
-    <div class="mb-3">
-      <label for="name" class="form-label" >Name: </label>
-      <input type="text"  name="name" class="form-control" [(ngModel)]="person.names">
-    </div>
-    <div class="mb-3">
-      <label for="lastname" class="form-label">Last Name: </label>
-      <input type="text" class="form-control" name="lastname" [(ngModel)]="person.lastnames">
-    </div>
-    <div class="mb-3">
-      <label for="identifier" class="form-label">Identifier Document: </label>
-      <input type="text"  class="form-control" name="identifier" [(ngModel)]="person.identifierDocument">
-    </div>
-    <div class="mb-3">
-      <label for="gender" class="form-label">Gender: </label>
-      <select class="form-select" aria-label="gender select" [(ngModel)]="gen.id">
-        <option *ngFor="let gender of genders" [ngValue]="gender.id">{{gender.genre}}</option>
-      </select>
-    </div>
-  </fieldset>
+        <fieldset>
+          <legend>Personal data</legend>
+          <div class="mb-3">
+            <label for="name" class="form-label" >Name: </label>
+            <input type="text"  name="name" class="form-control" [(ngModel)]="person.names">
+          </div>
+          <div class="mb-3">
+            <label for="lastname" class="form-label">Last Name: </label>
+            <input type="text" class="form-control" name="lastname" [(ngModel)]="person.lastnames">
+          </div>
+          <div class="mb-3">
+            <label for="identifier" class="form-label">Identifier Document: </label>
+            <input type="text"  class="form-control" name="identifier" [(ngModel)]="person.identifierDocument">
+          </div>
+          <div class="mb-3">
+            <label for="gender" class="form-label">Gender: </label>
+            <select class="form-select" aria-label="gender select" [(ngModel)]="gen.id">
+              <option *ngFor="let gender of genders" [ngValue]="gender.id">{{gender.genre}}</option>
+            </select>
+          </div>
+        </fieldset>
 
-<!-- error -->
-  <div class="alert alert-danger d-flex align-items-center" role="alert" *ngIf="!msgStatus && msgDataPerson!=''">
-    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-    <div>
-      {{msgDataPerson}}
-    </div>
+      <!-- error -->
+        <div class="alert alert-danger d-flex align-items-center" role="alert" *ngIf="!msgStatus && msgDataPerson!=''">
+          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+          <div>
+            {{msgDataPerson}}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-6 col-lg-6 px-5">
+        <fieldset>
+          <legend>User data</legend>
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" [(ngModel)]="user.username">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password: </label>
+            <input type="password" class="form-control" [(ngModel)]="user.password" name="password" >
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email: </label>
+            <input type="email" class="form-control" name="email" [(ngModel)]="user.email">
+          </div>
+        </fieldset>
+
+
+        <!-- error -->
+        <div class="alert alert-danger d-flex align-items-center" role="alert" *ngIf="!msgStatus && msgDataUser!=''">
+          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+          <div>
+            {{msgDataUser}}
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-register me-3" (click)="registerUser()" >Create User</button>
+        <button type="reset" class="btn btn-danger">Clear Form</button>
+
+      </div>
   </div>
-
-  <hr>
-
-  <fieldset>
-    <legend>User data</legend>
-    <div class="mb-3">
-      <label for="username" class="form-label">Username</label>
-      <input type="text" class="form-control" name="username" [(ngModel)]="user.username">
-    </div>
-    <div class="mb-3">
-      <label for="password" class="form-label">Password: </label>
-      <input type="password" class="form-control" [(ngModel)]="user.password" name="password" >
-    </div>
-    <div class="mb-3">
-      <label for="email" class="form-label">Email: </label>
-      <input type="email" class="form-control" name="email" [(ngModel)]="user.email">
-    </div>
-  </fieldset>
-
-
-  <!-- error -->
-  <div class="alert alert-danger d-flex align-items-center" role="alert" *ngIf="!msgStatus && msgDataUser!=''">
-    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-    <div>
-      {{msgDataUser}}
-    </div>
-  </div>
-
-  <button type="button" class="btn btn-primary" (click)="registerUser()" >Create User</button>
-  <button type="reset" class="btn btn-danger">Clear Form</button>
-
 
 </div>
+
