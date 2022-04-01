@@ -69,16 +69,10 @@ aria-hidden="true"
       <app-error *ngIf="!formStatus" [error]="msg"></app-error>
     </div>
     <div class="modal-footer">
+
       <button
         type="button"
-        class="btn btn-secondary"
-        data-bs-dismiss="modal"
-      >
-        Close
-      </button>
-      <button
-        type="button"
-        class="btn btn-primary"
+        class="btn btn-new text-light"
         (click)="updateCategory()"
       >
         Save category
