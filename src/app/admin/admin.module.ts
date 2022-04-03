@@ -15,6 +15,8 @@ import { ModalEditClothingComponent } from './components/modal-edit-clothing/mod
 import { ReportsComponent } from './pages/reports/reports.component';
 import { NgChartsModule } from 'ng2-charts';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { CustomPipesModule } from '../custom-pipes/custom-pipes.module';
+
 @NgModule({
   declarations: [
     AdminMenuComponent,
@@ -26,14 +28,15 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     InventoryComponent,
     ModalDetailsComponent,
     ModalEditClothingComponent,
-    ReportsComponent
+    ReportsComponent,
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
     NgChartsModule,
-    PdfViewerModule
+    PdfViewerModule,
+    CustomPipesModule
   ]
 })
 export class AdminModule { }

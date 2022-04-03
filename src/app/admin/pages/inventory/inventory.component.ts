@@ -90,14 +90,14 @@ export class InventoryComponent implements OnInit {
   }
 
   saveClothe(){
-    
-    
+
+
     if(this.validateForm()){
-      
+
       this._cltServices.createClothe(this.clothe).subscribe(res=>{
         if(res.success){
           alert(res.message);
-          
+
           this.resetForm();
           this.renderInventory();
         }else{
@@ -138,7 +138,7 @@ export class InventoryComponent implements OnInit {
   renderInventory(){
     this._cltServices.getAllClothes().subscribe(res=>{
       this.pagination = res.data;
-      this.inventory = this.pagination.slice(0,2);
+      // this.inventory = this.pagination.slice(0,2);
     });
   }
 
@@ -166,9 +166,15 @@ export class InventoryComponent implements OnInit {
       this.nextCount = 0;
       this.inventory = [];
       this.pagination = [];
-      this.renderInventory();   
+      this.renderInventory();
     }else{
       console.log('canceled');
     }
+  }
+
+  public filtergender = '';
+
+  filter(event:any){
+    this.filtergender = event.target.value;
   }
 }
