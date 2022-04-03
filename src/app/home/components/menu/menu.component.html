@@ -60,7 +60,7 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" (click)="logOut()">Logout</a></li>
-                                    <li><a class="dropdown-item" [routerLink]="['sell']">Billing</a></li>
+                                    <li *ngIf="!isAdmin"><a class="dropdown-item" [routerLink]="['sell']">Billing</a></li>
                                     <li *ngIf="user.rol_id == 1"><a class="dropdown-item" [routerLink]="['admin']">Dashboard</a></li>
 
                                 </ul>

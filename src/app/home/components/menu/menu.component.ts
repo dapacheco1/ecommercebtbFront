@@ -17,6 +17,7 @@ export class MenuComponent implements OnInit {
   public menuDataStatus:boolean = false;
   public items!:Clothing[];
   public cats:Category[] = [];
+  public isAdmin:boolean = true;
 
   constructor(
     private _userService:UserServicesService,
@@ -36,6 +37,9 @@ export class MenuComponent implements OnInit {
     const aux:any= localStorage.getItem('user');
     if(aux){
       this.user = JSON.parse(aux);
+      if(this.user.rol_id==2){
+        this.isAdmin = false;
+      }
       this.menuDataStatus = true;
     }else{
       this.menuDataStatus = false;

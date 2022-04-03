@@ -6,6 +6,8 @@ import { AdminGuard } from '../auth/guard/admin.guard';
 import { InventoryComponent } from '../admin/pages/inventory/inventory.component';
 import { ReportsComponent } from './pages/reports/reports.component';
 
+import * as printJS from 'print-js'
+
 const routes: Routes = [
   {
     path:'',

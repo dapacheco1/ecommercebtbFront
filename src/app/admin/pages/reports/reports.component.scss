@@ -1,4 +1,19 @@
-#tableresp,.header{
+.tableresp,.header{
     border-radius: 12px;
-    box-shadow: 0 0 13px rgb(59, 59, 59);
+    // box-shadow: 0 0 13px rgb(59, 59, 59);
+}
+
+.text-sec{
+  color:#005B4A;
+}
+
+.btn-sec{
+  background-color: #005B4A;
+  color:white;
+  border:1px solid #005B4A;
+}
+
+.btn-download{
+  background-color: #A26956;
+  color: white;
 }

@@ -14,7 +14,7 @@ import { ModalDetailsComponent } from './components/modal-details/modal-details.
 import { ModalEditClothingComponent } from './components/modal-edit-clothing/modal-edit-clothing.component';
 import { ReportsComponent } from './pages/reports/reports.component';
 import { NgChartsModule } from 'ng2-charts';
-
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 @NgModule({
   declarations: [
     AdminMenuComponent,
@@ -32,7 +32,8 @@ import { NgChartsModule } from 'ng2-charts';
     CommonModule,
     AdminRoutingModule,
     FormsModule,
-    NgChartsModule
+    NgChartsModule,
+    PdfViewerModule
   ]
 })
 export class AdminModule { }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BaseBillingComponent } from './components/base-billing/base-billing.component';
 import { BillingComponent } from './pages/billing/billing.component';
 import { LoginGuard } from '../auth/guard/login.guard';
+import { ClientGuard } from '../auth/guard/client.guard';
 
 const routes: Routes = [
   {
@@ -17,7 +18,7 @@ const routes: Routes = [
       {
         path:'billing',
         component:BillingComponent,
-        canActivate:[LoginGuard]
+        canActivate:[LoginGuard,ClientGuard]
       }
     ]
 
