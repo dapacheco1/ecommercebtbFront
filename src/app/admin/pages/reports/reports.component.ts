@@ -4,10 +4,10 @@ import { ReportsService } from 'src/app/services/reports.service';
 import { SalesDetailService } from 'src/app/services/sales-detail.service';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
-import { jsPDF } from 'jspdf';
-import html2canvas from 'html2canvas';
+
 
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
+import { DownloadPDFService } from 'src/app/services/download-pdf.service';
 
 
 @Component({
@@ -24,7 +24,8 @@ export class ReportsComponent implements OnInit {
 
   constructor(
     private _salesDetailService: SalesDetailService,
-    private _reportsService: ReportsService
+    private _reportsService: ReportsService,
+    private pdfService:DownloadPDFService
   ) {
     this.today =
       this.today.getFullYear() +
@@ -104,17 +105,7 @@ export class ReportsComponent implements OnInit {
   public convertToPDF() {
 
 
-    let div: any = document.querySelector('#report');
-    html2canvas(div).then((canvas) => {
-      // Few necessary setting options
-
-      const contentDataURL = canvas.toDataURL('image/png');
-      let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
-      var width = pdf.internal.pageSize.getWidth();
-      var height = (canvas.height * width) / canvas.width;
-      pdf.addImage(contentDataURL, 'PNG', 0, 0, width, height);
-      pdf.save(`Report-mostSoldat-${this.today}.pdf`); // Generated PDF
-    });
+    this.pdfService.convertToPDF('report',this.today,"ReportMostSoldat");
   }
 
   getOnlyAmounts() {

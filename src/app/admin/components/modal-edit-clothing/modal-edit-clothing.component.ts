@@ -1,4 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Category } from 'src/app/interfaces/Category';
 import { Clothing } from 'src/app/interfaces/Clothing';
 import { Gender } from 'src/app/interfaces/Gender';
@@ -28,7 +29,8 @@ export class ModalEditClothingComponent implements OnInit {
     private _sizeServices:SizeService,
     private _genderServices:GenderService,
     private _cltServices:ClothingService,
-    private _form:FormValidationsService
+    private _form:FormValidationsService,
+    private router:Router
   ) {
 
    }
@@ -85,7 +87,6 @@ export class ModalEditClothingComponent implements OnInit {
 
   saveClothes(){
 
-    console.log(this.clothe);
     if(this.validateForm()){
 
       this._cltServices.updateClothe(this.clothe).subscribe(res=>{
@@ -93,6 +94,7 @@ export class ModalEditClothingComponent implements OnInit {
           alert(res.message);
 
           this.resetForm();
+          window.location.reload();
         }else{
           alert(res.message);
         }
@@ -125,7 +127,7 @@ export class ModalEditClothingComponent implements OnInit {
     const name = this._form.onlyLetters(this.clothe.name,"product name");
     const details = this._form.onlyLettersSpecialLettersAndNumbers(this.clothe.detail,"details");
 
-    console.log(price,stock,name,details);
+
 
     if(price.success && stock.success && name.success && details.success && this.clothe.size_id != 0 && this.clothe.genre_id != 0 && this.clothe.category_id!=0){
       return true;

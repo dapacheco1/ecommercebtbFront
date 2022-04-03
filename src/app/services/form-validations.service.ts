@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
 export class FormValidationsService {
   private regexTxt = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð '-]+$/u;
   private regexDir = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð0-9 '-]+$/u;
-  private regexNum = /^[0-9]+(\\.[0-9]+)?$/;
+  // private regexNum = /^[0-9]+(\\.,[0-9]+)?$/;
+  private regexNum = /^[0-9]{1,2}([,.][0-9]{1,2})?$/;
   private regexUser = /^[A-Za-z0-9]+$/;
   private regexPass = /^[A-Za-z0-9-@.,]+$/;
   private regexEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;

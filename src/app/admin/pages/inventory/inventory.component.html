@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12 px-3 py-4">
-      <div class="bg-light px-4 py-4 form">
+    <div class="col-7 px-3 py-4 m-auto">
+      <div class="bg-light px-5 py-5 form">
         <h3 class="mb-3 text-center">Register Clothing Form</h3>
         <div class="row mb-3">
           <div class="col-sm-12 col-md-4 col-lg-4">
@@ -143,144 +143,48 @@
         </button>
       </div>
     </div>
-    <!-- <div class="col-sm-12 col-md-7 col-lg-7 px-3 py-4 overflow-auto">
-      <div class="bg-light px-4 py-4 form">
-        <h3 class="text-center mb-4">Inventory</h3>
-        <div class="row">
-          <div
-            class="col-sm-12 col-md-12 col-lg-6 mb-md-4"
-            *ngFor="let inv of inventory; let i = index"
-          >
-            <div class="card" style="width: auto">
-              <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-4">
-                  <img [src]="inv.image" class="card-img-top" alt="..." />
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-8">
-                  <div class="card-body">
-                    <h5 class="card-title">{{ inv.name }}</h5>
-                    <div class="row">
-                      <div class="col-sm-6 col-md-6 col-lg-6">
-                        <span> <b>Category</b> </span>
-                      </div>
-                      <div class="col-sm-6 col-md-6 col-lg-6">
-                        {{ inv.category?.detail }}
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-6 col-md-6 col-lg-6">
-                        <span> <b>Price:</b> </span>
-                      </div>
-                      <div class="col-sm-6 col-md-6 col-lg-6">
-                        <small>$ {{ inv.price }}</small>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-6 col-md-6 col-lg-6">
-                        <span> <b>Size:</b> </span>
-                      </div>
-                      <div class="col-sm-6 col-md-6 col-lg-6">
-                        {{ inv.size?.size }}
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-6 col-md-6 col-lg-6">
-                        <span> <b>Stock:</b> </span>
-                      </div>
-                      <div class="col-sm-6 col-md-6 col-lg-6">
-                        {{ inv.stock }}
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-6 col-md-6 col-lg-6">
-                        <span> <b>Gender: </b> </span>
-                      </div>
-                      <div class="col-sm-6 col-md-6 col-lg-6">
-                        {{ inv.genre?.genre }}
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-6 col-md-6 col-lg-6">
-                        <span> <b>Status:</b> </span>
-                      </div>
-                      <div class="col-sm-6 col-md-6 col-lg-6">
-                        {{ inv.status }}
-                      </div>
-                    </div>
-                    <div class="row mt-4">
-                      <div class="col-4">
-                        <button
-                          class="btn btn-primary"
-                          data-bs-toggle="modal"
-                          [attr.data-bs-target]="'#clothes' + i"
-                        >
-                          <i class="fa-solid fa-eye"></i>
-                        </button>
-                        <app-modal-details
-                          [modalId]="'clothes' + i"
-                          [details]="inv.name"
-                          [created_at]="inv.created_at"
-                          [updated_at]="inv.updated_at"
-                        ></app-modal-details>
-                      </div>
-                      <div class="col-4">
-                        <button class="btn btn-primary" data-bs-toggle="modal"
-                        [attr.data-bs-target]="'#edit'+i">
-                          <i class="fa-solid fa-pencil"></i>
-                        </button>
-                        <app-modal-edit-clothing
-                        [modalId]="'edit' + i" [clothe]="inv"></app-modal-edit-clothing>
-                      </div>
-                      <div class="col-4">
-                        <button
-                          class="btn btn-danger"
-                          data-bs-toggle="modal"
-                          data-bs-target="#exampleModal"
-                          (click)="assignId(inv.id)"
-                        >
-                          <i class="fa-solid fa-trash"></i>
-                        </button>
-                        <app-modal-message
-                          [msg]="msg"
-                          [id]="asId"
-                          [action]="2"
-                          (deleted)="isDeleted($event)"
-                        ></app-modal-message>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <div class="row">
+        <div class="col-12 mx-3 my-3">
+          <h3 class="text-sec"> <span><i class="fa-solid fa-filter"></i></span> Inventory Filters </h3>
+
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 mx-3 my-3">
+          <label for="genders" class="form-label text-sec">Genders</label>
+          <select class="form-select" aria-label="Default select example" name="genders" (change)="filter($event)" >
+            <option value="" selected>All genders</option>
+            <option *ngFor="let gen of genders" [value]="gen.genre">{{gen.genre}}</option>
+
+          </select>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 mx-3 my-3">
+          <label for="categories" class="form-label text-sec">Categories</label>
+          <select class="form-select" aria-label="Default select example" name="categories" (change)="filterCat($event)" >
+            <option value="" selected>All categories</option>
+            <option *ngFor="let cat of cats" [value]="cat.detail">{{cat.detail}}</option>
+
+          </select>
+        </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 mx-4 my-3">
+          <button class="btn btn-sec mt-4" (click)="renderInventory()">See Inventory</button>
+          <input  type="button" name="download" class="btn btn-download mt-4" value="Download PDF" (click)="convertToPDF()" />
+
+        </div>
+
+      </div>
+
+    <div class="col-12-px-3 py-4 overflow-auto " id="inventoryProds">
+      <div class="table-responsive mx-3 my-3 bg-light px-5 py-4">
+        <div class="col-12">
+          <div class="row mt-4">
+            <div class="col-12 text-center">
+              <img src="../../../../assets/img/mylogo.png" alt="btblogo" width="100" height="100" >
+            </div>
+            <div class="col-12 text-center">
+              <h3>Inventory at {{today}}</h3>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-12 d-flex justify-content-center">
-            <nav aria-label="Page navigation example">
-              <ul class="pagination">
-                <li class="page-item page">
-                  <a class="page-link" (click)="prev()">Previous Items</a>
-                </li>
-                <li class="page-item page">
-                  <a class="page-link" (click)="next()">Next Items</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <div class="col-12">
-      <div class="row">
-        <select class="form-select" aria-label="Default select example" name="select" (change)="filter($event)" >
-        <option value="" selected>All genders</option>
-        <option value="F">Female</option>
-        <option value="M">Male</option>
-      </select>
-      </div>
-    </div>
-    <div class="col-12-px-3 py-4 overflow-auto">
-      <div class="table-responsive">
         <table class="table">
           <thead>
             <tr>
@@ -292,10 +196,11 @@
               <th scope="col">Price</th>
               <th scope="col">Size</th>
               <th scope="col">Gender</th>
+              <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of pagination; let i = index;">
+            <tr *ngFor="let item of pagination | filterCategory:filtercat |filter:filtergender; let i = index;">
               <th scope="row">{{ i + 1 }}</th>
               <td>{{ item.category?.detail }}</td>
               <td>{{ item.name }}</td>
@@ -311,6 +216,50 @@
               <td>{{ item.price }}</td>
               <td>{{ item.size?.size }}</td>
               <td>{{ item.genre?.genre }}</td>
+              <td>
+                <div class="row mt-4">
+                  <div class="col-12">
+                    <button
+                    class="btn btn-download"
+                    data-bs-toggle="modal"
+                    [attr.data-bs-target]="'#clothes' + i"
+                  >
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                  <app-modal-details
+                    [modalId]="'clothes' + i"
+                    [details]="item.name"
+                    [created_at]="item.created_at"
+                    [updated_at]="item.updated_at"
+                  ></app-modal-details>
+
+                  <button class="btn btn-sec" data-bs-toggle="modal"
+                  [attr.data-bs-target]="'#edit'+i">
+                    <i class="fa-solid fa-pencil"></i>
+                  </button>
+                  <app-modal-edit-clothing
+                  [modalId]="'edit' + i" [clothe]="item"></app-modal-edit-clothing>
+
+
+                  <button
+                    class="btn btn-danger"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                    (click)="assignId(item.id)"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                  <app-modal-message
+                    [msg]="msg"
+                    [id]="asId"
+                    [action]="2"
+                    (deleted)="isDeleted($event)"
+                  ></app-modal-message>
+                  </div>
+
+
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>

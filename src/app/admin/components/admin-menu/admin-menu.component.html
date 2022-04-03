@@ -8,14 +8,15 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" id="shirts" href="#">
+                   Store
+                </a>
+              </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="home" aria-current="page" href="admin">Dashboard</a>
+                    <a class="nav-link" id="home" aria-current="page" href="admin">Categories</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="shirts" href="#">
-                       Store
-                    </a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" id="" [routerLink]="['inventory']">
                        Inventory
@@ -37,7 +38,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" (click)="logOut()">Logout</a></li>
-                            <li><a class="dropdown-item" [routerLink]="['/sell']">Billing</a></li>
+
                             <li *ngIf="user.rol_id == 1"><a class="dropdown-item" [routerLink]="['admin']">Dashboard</a>
                             </li>
 

@@ -20,6 +20,7 @@
                         <select
                           class="form-select"
                           name="categories"
+
                           (change)="filterSizesByCatId($event)"
                         >
                           <option value="">---</option>
@@ -161,7 +162,7 @@
               </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+
           <button class="btn btn-success" (click)="saveClothes()">
             Save Product
           </button>

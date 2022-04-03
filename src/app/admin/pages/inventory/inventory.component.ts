@@ -5,6 +5,7 @@ import { Gender } from 'src/app/interfaces/Gender';
 import { Size } from 'src/app/interfaces/Size';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { ClothingService } from 'src/app/services/clothing.service';
+import { DownloadPDFService } from 'src/app/services/download-pdf.service';
 import { FormValidationsService } from 'src/app/services/form-validations.service';
 import { GenderService } from 'src/app/services/gender.service';
 import { SizeService } from 'src/app/services/size.service';
@@ -26,15 +27,21 @@ export class InventoryComponent implements OnInit {
   private nextCount:number =0;
   public asId:number = 0;
   public msg:string = 'Are you sure that you want to delete this clothe. This action cannot be undone.';
-
+  public today: any = new Date();
   constructor(
     private _catServices:CategoriesService,
     private _sizeServices:SizeService,
     private _genderServices:GenderService,
     private _cltServices:ClothingService,
-    private _form:FormValidationsService
+    private _form:FormValidationsService,
+    private _pdfService:DownloadPDFService
   ) {
-
+    this.today =
+    this.today.getFullYear() +
+    '-' +
+    (this.today.getMonth() + 1) +
+    '-' +
+    this.today.getDate();
    }
 
   ngOnInit(): void {
@@ -45,7 +52,7 @@ export class InventoryComponent implements OnInit {
     this.loadCategories();
     this.loadSizes();
     this.loadGenders();
-    this.renderInventory();
+    // this.renderInventory();
 
 
 
@@ -99,7 +106,7 @@ export class InventoryComponent implements OnInit {
           alert(res.message);
 
           this.resetForm();
-          this.renderInventory();
+          window.location.reload();
         }else{
           alert(res.message);
         }
@@ -166,15 +173,22 @@ export class InventoryComponent implements OnInit {
       this.nextCount = 0;
       this.inventory = [];
       this.pagination = [];
-      this.renderInventory();
+      window.location.reload();
     }else{
       console.log('canceled');
     }
   }
 
   public filtergender = '';
-
+  public filtercat = '';
   filter(event:any){
     this.filtergender = event.target.value;
+  }
+  filterCat(event:any){
+    this.filtercat = event.target.value;
+  }
+
+  convertToPDF(){
+    this._pdfService.convertToPDF('inventoryProds',this.today,"ReportAllInventoryat");
   }
 }
