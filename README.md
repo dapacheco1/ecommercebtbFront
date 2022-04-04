@@ -23,6 +23,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 Created By: Danny Pacheco under Bitexblock
 
 ## Bitexblock Members
-
+[sfloreano](https://github.com/sfloreano)
 ## License
 This project is open-sourced software licensed under the MIT license[https://opensource.org/licenses/MIT].
