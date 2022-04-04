@@ -10,16 +10,10 @@
   transition: all 250ms ease;
 }
 
-
-.left{
-  background: linear-gradient(90deg, rgba(78,255,143,1) 0%, rgba(43,145,80,1) 50%, rgba(78,255,143,1) 100%);
+.text-sec{
+  color: #005B4A;
 }
-
-.right{
-  background: linear-gradient(90deg, rgba(78,255,241,1) 0%, rgba(39,124,117,1) 50%, rgba(78,255,241,1) 100%);
-}
-
-
 .left,.right{
   border-radius: 12px;
+  box-shadow: 0 0 12px rgb(66, 66, 66);
 }
