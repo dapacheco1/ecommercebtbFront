@@ -144,6 +144,7 @@ export class InventoryComponent implements OnInit {
       this.clothe.detail.length > 3 &&
       this.clothe.category_id != 0
     ) {
+      this.msg = '';
       this.errForm = false;
       return true;
     } else {
