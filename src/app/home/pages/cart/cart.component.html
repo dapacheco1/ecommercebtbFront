@@ -1,44 +1,51 @@
-<div class="container-fluid bg-light my-4 pb-2">
-  <h3 >Order</h3>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Order Number</th>
-        <th scope="col">Description</th>
-        <th scope="col">Amount</th>
-        <th scope="col">Total of item</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let cr of cart;let i = index">
-        <th >{{i+1}}</th>
-        <td >{{cr.clothing?.detail}}</td>
-        <td>
-          <div class="input-group mb-3 w-50">
-            <button class="input-group-text" class="btn btn-primary" id="basic-addon1" (click)="substractUp(cr,i)">-</button>
-            <input type="number" min="0" step="1" class="form-control" [(ngModel)]="cr.amount" (change)="updateCart($event,cr,i)">
-            <button class="input-group-text" class="btn btn-primary" id="basic-addon1" (click)="addUp(cr,i)">+</button>
+<div class="container-fluid ">
+  <div class="row">
+    <div class="col-12">
+      <div class="table-responsive bg-light px-4 py-4  mx-4 my-4">
+        <h3 >Order</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Order Number</th>
+              <th scope="col">Description</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Total of item</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cr of cart;let i = index">
+              <th >{{i+1}}</th>
+              <td >{{cr.clothing?.detail}}</td>
+              <td>
+                <div class="input-group mb-3 w-50">
+                  <button class="input-group-text" class="btn btn-amount" id="basic-addon1" (click)="substractUp(cr,i)">-</button>
+                  <input type="number" min="0" step="1" class="form-control" [(ngModel)]="cr.amount" (change)="updateCart($event,cr,i)">
+                  <button class="input-group-text" class="btn btn-amount" id="basic-addon1" (click)="addUp(cr,i)">+</button>
+                </div>
+      
+              </td>
+              <td>{{cr.total}}</td>
+            </tr>
+          </tbody>
+          <div class="row mt-3 col-12 col-md-12 col-lg-12 pt-3">
+            <div class="col">
+              <b>Total to pay:</b><span>${{total}} USD</span>
+            </div>
           </div>
-
-        </td>
-        <td>{{cr.total}}</td>
-      </tr>
-    </tbody>
-    <div class="row mt-3 col-12 col-md-12 col-lg-12 pt-3">
-      <div class="col">
-        <b>Total to pay:</b><span>${{total}} USD</span>
+        </table>
+      
+        <div class="row col-12 col-md-12 col-lg-12 mb-4" *ngIf="cart.length!=0">
+          <div class="col">
+            <button class="btn btn-danger " (click)="deleteAll()">
+              Cancel Order
+            </button>
+            <button class="btn btn-amount mx-2" (click)="redirectToBilling()">
+              Buy Now!
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  </table>
-
-  <div class="row col-12 col-md-12 col-lg-12 mb-4" *ngIf="cart.length!=0">
-    <div class="col">
-      <button class="btn btn-danger " (click)="deleteAll()">
-        Cancel Order
-      </button>
-      <button class="btn btn-success mx-2" (click)="redirectToBilling()">
-        Buy Now!
-      </button>
-    </div>
   </div>
+ 
 </div>

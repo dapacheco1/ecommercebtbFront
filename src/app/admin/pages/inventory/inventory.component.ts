@@ -28,6 +28,9 @@ export class InventoryComponent implements OnInit {
   public asId:number = 0;
   public msg:string = 'Are you sure that you want to delete this clothe. This action cannot be undone.';
   public today: any = new Date();
+  public formMsg:string = '';
+  public errForm:boolean = false;
+
   constructor(
     private _catServices:CategoriesService,
     private _sizeServices:SizeService,
@@ -134,9 +137,52 @@ export class InventoryComponent implements OnInit {
     const name = this._form.onlyLetters(this.clothe.name,"product name");
     const details = this._form.onlyLettersSpecialLettersAndNumbers(this.clothe.detail,"details");
 
-    if(price.success && stock.success && name.success && details.success && this.clothe.size_id != 0 && this.clothe.genre_id != 0 && this.clothe.category_id!=0){
+    if(price.success && stock.success && name.success && details.success && this.clothe.size_id != 0 && this.clothe.genre_id != 0 && this.clothe.category_id!=0 && this.clothe.price>0 && this.clothe.stock>0 && this.clothe.name.length>3 && this.clothe.detail.length>3 && this.clothe.category_id!=0){
+      this.errForm = false;
       return true;
     }else{
+      this.errForm = true;
+     
+      if(!price.success){
+        if(this.clothe.price<=0){
+          this.formMsg += ` *Price is required`;
+        }else{
+          this.formMsg += ` *${price.message}`;
+        }
+        
+      }
+
+      if(!stock.success){
+        if(this.clothe.stock<0){
+          this.formMsg += ` *Stock is required`;
+        }else{
+          this.formMsg += ` *${stock.message}`;
+        }
+      }
+
+      if(!name.success){
+        if(this.clothe.name.length<3){
+          this.formMsg += ` *Name length at least is 3 characters or its required`;
+        }else{
+          this.formMsg += ` *${name.message}`;
+        }
+      }
+
+      if(!details.success){
+        if(this.clothe.detail.length<3){
+          this.formMsg += ` *Detail length at least is 3 characters or its required`;
+        }else{
+          this.formMsg += ` *${details.message}`;
+        }
+      }
+
+      if(this.clothe.genre_id==0){
+        this.formMsg += ` *Gender is required`;
+      }
+
+      if(this.clothe.image.length==0){
+        this.formMsg += ` *Image URL is required`;
+      }
       return false;
     }
   }

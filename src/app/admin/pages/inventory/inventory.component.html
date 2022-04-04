@@ -141,8 +141,10 @@
         <button class="btn btn-success" (click)="saveClothe()">
           Save Product
         </button>
+        <app-error *ngIf="errForm" [error]="formMsg"></app-error>
       </div>
     </div>
+    <hr>
       <div class="row">
         <div class="col-12 mx-3 my-3">
           <h3 class="text-sec"> <span><i class="fa-solid fa-filter"></i></span> Inventory Filters </h3>

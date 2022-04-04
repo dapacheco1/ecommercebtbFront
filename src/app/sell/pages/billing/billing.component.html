@@ -1,4 +1,4 @@
-<div class="container pb-5">
+<div class="container pb-5  text-sec">
 
   <div class="row col-12 pt-4">
     <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 col-xxl-5 bg-light my-5 px-4 py-4" id="details">
@@ -45,7 +45,7 @@
           <b  class="fs-3">Date</b><b class="fs-3">Price</b>
         </div>
       </div>
-      <div class="row col-12 text-primary" *ngFor="let h of history">
+      <div class="row col-12" *ngFor="let h of history">
         <div class="d-flex justify-content-between">
           <span>{{h.saleDate}}</span><span>$ {{h.total}} USD</span>
         </div>

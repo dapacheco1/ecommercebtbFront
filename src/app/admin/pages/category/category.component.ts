@@ -70,11 +70,11 @@ export class CategoryComponent implements OnInit {
       }
 
       if(this.categoryForm.detail.length<3 && this.categoryForm.detail!=''){
-        this.msg += ` *Invalid category name`;
+        this.msg += ` *Invalid category name, length most be at least 3 characters`;
       }
 
       if(this.categoryForm.slug.length<3 && this.categoryForm.slug!=''){
-        this.msg += ` *Invalid slug name`;
+        this.msg += ` *Invalid slug name, length most be at least 3 characters`;
       }
 
       if(!slug.success){
